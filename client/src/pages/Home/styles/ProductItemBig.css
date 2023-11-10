@@ -139,3 +139,44 @@
     background-color: #003C28;
     transition: 400ms all ease-in-out;
 }
+
+
+.wishlist-options {
+    background-color: #fff;
+    border: 2px solid #003C28;
+    padding: 1vw;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-options.active {
+    display: block;
+}
+
+.wishlist-options button {
+    background-color: rgb(8,172,10);
+    color: #fff;
+    border: none;
+    padding: 1vh 1vw;
+    margin: 2vh 2vw 2vh 2vw;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 5vh;
+}
+
+.wishlist-options .save-btn{
+    margin-top: 2vh;
+    margin-left: 2vw;
+    background-color: red;
+}
+
+.wishlist-options .input-name{
+    padding: 1vh 1vw;
+    height: 5vh;
+    width: 10vw;
+    border-radius: 10px;
+}
