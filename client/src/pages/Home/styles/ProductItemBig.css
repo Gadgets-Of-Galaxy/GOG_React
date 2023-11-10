@@ -1,0 +1,141 @@
+
+.product-item {
+    border-radius: 10px;
+    flex: 0 0 auto;
+    z-index: 0;
+    width: 30%;
+    /* margin-left: 2vw; */
+}
+
+.product-thumbnail{
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f5f6f6;
+}
+
+.deal-image{
+    border-radius: 10px;
+    transition: all 200ms ease;
+    display: inline-block;
+    vertical-align: center;
+    width: fit-content;
+}
+.deal-image:hover{
+    transform: scale(1.2);
+}
+
+.product-wishlist{
+    position: absolute;
+    display: flex;
+    top: 16px;
+    right: 16px;
+    left: auto;
+    bottom: auto;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    border-radius: 100px;
+    align-items: center;
+    background-color: #fff;
+    transition: all 200ms ease;
+}
+.product-wishlist:hover{
+    background-color: #f9dcdc;
+}
+
+.product-wishlist img{
+    width: 20px;
+    height: 20px;
+}
+.product-title-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-title{
+    z-index: 1;
+    margin-top: 1.2em;
+    margin-bottom: 2vh;
+    font-family: Inter, sans-serif;
+    color: #231f1e;
+    font-size: 1.2em;
+    font-weight: 600;   
+}
+
+.product-price{
+    font-size: 1.2em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.text-span{
+    font-family: Inter, sans-serif;
+    position: relative;
+    font-size: 1em;
+    right: 0.2vw;
+}
+
+.product-desc{
+    margin-bottom: 1em;
+    font-family: Eina02, sans-serif;
+    font-size: 0.9em;
+    line-height: 1.2em;
+}
+
+.product-rating{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.star-wrap{
+    line-height: 1em;
+}
+
+.product-star{
+    width: 1em;
+    margin-right: 2px;
+}
+
+.total-rating{
+    margin-left: 5px;
+    font-size: 0.9em;
+    line-height: 100%;
+    font-weight: 500;
+}
+
+.button-wrap{
+    display: inline-block;
+    height: 6vh;
+    width: 7vw;
+}
+
+.primary-button{
+    position: relative;
+    z-index: 0;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: all 200ms ease;
+    text-decoration: none;
+    border: 2px solid #231f1e;
+    font-family: Inter, sans-serif;
+    color: inherit;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.primary-button:hover{
+    color: white;
+    background-color: #003C28;
+    transition: 400ms all ease-in-out;
+}

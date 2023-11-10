@@ -1,0 +1,8 @@
+
+.product-item-s {
+    border-radius: 10px;
+    flex: 0 0 auto;
+    z-index: 0;
+    width: 100%; 
+    margin-bottom: 3vh;
+}
