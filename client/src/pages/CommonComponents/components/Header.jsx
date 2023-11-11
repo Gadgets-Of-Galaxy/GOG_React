@@ -40,7 +40,7 @@ export const Header = () => {
           </div>
         </div>
         <div className="header-right">
-          <Link to='/login'><p>My Account</p></Link>
+          <Link to='/myAccount'><p>My Account</p></Link>
           <FontAwesomeIcon className="header-right-icon" icon={faHeart} />
           <FontAwesomeIcon
             className="header-right-icon"
