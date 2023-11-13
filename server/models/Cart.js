@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const wishlistSchema = new mongoose.Schema({
+const cartSchema = new mongoose.Schema({
     items: [
         {
             productId: {
@@ -9,6 +9,10 @@ const wishlistSchema = new mongoose.Schema({
             imagePath: {
                 type: String,
                 required: false,
+            },
+            qty: {
+                type: Number,
+                default: 0,
             },
             price: {
                 type: Number,
@@ -27,6 +31,11 @@ const wishlistSchema = new mongoose.Schema({
         default: 0,
         required: true,
     },
+    totalCost: {
+        type: Number,
+        default: 0,
+        required: true,
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -38,4 +47,4 @@ const wishlistSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("Wishlist", wishlistSchema);
+module.exports = mongoose.model("Cart", cartSchema);

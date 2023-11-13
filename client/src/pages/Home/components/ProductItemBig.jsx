@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import favorite from "../assets/favorite.png";
 import "../styles/ProductItemBig.css";
 import axios from 'axios';
