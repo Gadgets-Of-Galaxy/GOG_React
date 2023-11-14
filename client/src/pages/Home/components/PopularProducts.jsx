@@ -2,9 +2,10 @@ import React from "react";
 import "../styles/HomeBestDeals.css";
 import {ProductItemBig} from "./ProductItemBig";
 
-export const PopularProducts = () => {
-    const productItemBig = Array.from({ length: 3 }, (_, index) => (
-        <ProductItemBig key={index} />
+export const PopularProducts = (props) => {
+    const products = props.products && props.products.products ? props.products.products : [];
+    const productItemBig = Array.from({ length: products.length}, (_, index) => (
+        <ProductItemBig key={index} title={products[index].title} imagePath={products[index].imagePath}/>
     ));
     return (
         <section className="HomeBestDeals">

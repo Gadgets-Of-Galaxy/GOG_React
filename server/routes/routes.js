@@ -1,8 +1,20 @@
 const express = require('express');
 const User = require('../models/User');
 const Wishlist = require('../models/Wishlist');
+const Products = require('../models/Product')
 
 const router = express();
+
+
+router.get('/api/products', async (req, res) => {
+    try {
+        // const userId = "654bce06b876608529edda9d";
+        const products = await Products.find({});
+        res.json({ products });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch products' });
+    };
+});
 
 router.get('/api/wishlists', async (req, res) => {
     try {

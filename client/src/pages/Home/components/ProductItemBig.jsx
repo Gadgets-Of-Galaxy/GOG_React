@@ -3,7 +3,8 @@ import favorite from "../assets/favorite.png";
 import "../styles/ProductItemBig.css";
 import axios from 'axios';
 
-export const ProductItemBig = () => {
+
+export const ProductItemBig = (props) => {
     const [showWishlistOptions, setShowWishlistOptions] = useState(false);
     const [wishlistName, setWishlistName] = useState('');
     const [createNewWishlist, setCreateNewWishlist] = useState(true);
@@ -11,7 +12,7 @@ export const ProductItemBig = () => {
     const [useExistingWishlist, setUseExistingWishlist] = useState(false);
     const [selectedWishlist, setSelectedWishlist] = useState('');
 
-
+    console.log(props.imagePath);
 
     useEffect(() => {
         fetchUserWishlists();
@@ -21,7 +22,7 @@ export const ProductItemBig = () => {
     const fetchUserWishlists = async () => {
         try {
             // const userId = '654bce06b876608529edda9d';
-            const response = await axios.get('http://localhost:3001/api/wishlists/654bce06b876608529edda9d');
+            const response = await axios.get('http://localhost:5000/api/wishlists/654bce06b876608529edda9d');
             if (response.status === 200) {
                 // console.log(response.data.wishlists[0]);
                 // console.log(response.data);
@@ -53,7 +54,7 @@ export const ProductItemBig = () => {
         if (createNewWishlist) {
             try {
                 const userId = '654bce06b876608529edda9d';
-                const response = await axios.post('http://localhost:3001/api/wishlists/create', {
+                const response = await axios.post('http://localhost:5000/api/wishlists/create', {
                     userId: userId,
                     name: wishlistName,
                 });
@@ -70,7 +71,7 @@ export const ProductItemBig = () => {
             if (selectedWishlist) {
                 try {
                     const productName = 'mobile';
-                    const response = await axios.post('http://localhost:3001/api/wishlists/addProduct', {
+                    const response = await axios.post('http://localhost:5000/api/wishlists/addProduct', {
                         wishlistId: selectedWishlist,
                         productName: productName,
                     });
@@ -93,7 +94,7 @@ export const ProductItemBig = () => {
     return (
         <div className="product-item">
             <div className="product-thumbnail">
-                <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e54b76914b262f2448_headphone-min.png"
+                <img src={props.imagePath}
                     alt="product-thumbnail"
                     className="deal-image"
                 />
@@ -134,7 +135,7 @@ export const ProductItemBig = () => {
             </div>
             <div className="product-content">
                 <div className="product-title-wrap">
-                    <h3 className="product-title">HomePod mini</h3>
+                    <h3 className="product-title">{props.title}</h3>
                     <div className="product-price">
                         <span className="text-span">Rs.</span>2000
                     </div>
