@@ -7,7 +7,7 @@ const router = require('./routes/routes');
 const cors = require('cors');
 const port = 5000;
 
-const mongoURL = 'mongodb+srv://hemanth0921:mongodbpassword@nodetut.ej60wid.mongodb.net/test';
+const mongoURL = 'mongodb+srv://hemanth0921:mongodbpassword@nodetut.ej60wid.mongodb.net/GOG';
 
 app.use(cors());
 
