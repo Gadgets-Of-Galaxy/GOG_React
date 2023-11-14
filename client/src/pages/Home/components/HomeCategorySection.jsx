@@ -1,10 +1,11 @@
-import React from "react";
+// import React from "react";
 import "../styles/HomeCategorySection.css";
 import { ProductItemSmall } from "./ProductItemSmall";
 
-export const HomeCategorySection = () => {
-    const productItemSmall = Array.from({ length: 6 }, (_, index) => (
-        <ProductItemSmall key={ index } />
+export const HomeCategorySection = (props) => {
+    const products = props.products && props.products.products ? props.products.products : [];
+    const productItemSmall = Array.from({ length: products.length}, (_, index) => (
+        <ProductItemSmall key={index} title={products[index].title} imagePath={products[index].imagePath}/>
     ));
     return (
         <section className="category-section">

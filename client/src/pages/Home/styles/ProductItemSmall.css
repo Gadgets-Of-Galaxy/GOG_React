@@ -6,3 +6,27 @@
     width: 100%; 
     margin-bottom: 3vh;
 }
+
+.product-wishlist{
+    position: absolute;
+    display: flex;
+    top: 16px;
+    right: 16px;
+    left: auto;
+    bottom: auto;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    border-radius: 100px;
+    align-items: center;
+    background-color: #fff;
+    transition: all 200ms ease;
+}
+.product-wishlist:hover{
+    background-color: #f9dcdc;
+}
+
+.product-wishlist img{
+    width: 20px;
+    height: 20px;
+}

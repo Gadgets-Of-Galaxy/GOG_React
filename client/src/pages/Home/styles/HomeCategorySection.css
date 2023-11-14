@@ -1,18 +1,20 @@
 .category-section{
-    margin-left: 4vw;
+    margin-left: 2vw;
     margin-right: 3vw;
+    padding-top: 11vh;
     padding-bottom: 11vh;
 }
+
 
 .frame{
     overflow: hidden;
     width: 100%;
-    padding-right: 2vw;
-    /* padding-left: 3vw; */
 }
 
 .products-wrap{
     margin-top: 2vw;
+    padding-right: 2vw;
+    padding-left: 2vw;
 }
 
 .secondary-button{

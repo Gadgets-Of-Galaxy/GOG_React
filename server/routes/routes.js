@@ -7,11 +7,13 @@ const router = express();
 
 router.get('/api/products', async (req, res) => {
     try {
+        console.log("best ");
         const products = await Product.find({});
+        // const bestSellingProducts = await Product.find({}).sort('-sold').limit(10);
         res.json({ products });
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch Products' });
-    };
+    }
 });
 
 router.get('/api/wishlists', async (req, res) => {

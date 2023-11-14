@@ -12,11 +12,8 @@ export const ProductItemBig = (props) => {
     const [useExistingWishlist, setUseExistingWishlist] = useState(false);
     const [selectedWishlist, setSelectedWishlist] = useState('');
 
-    console.log(props.imagePath);
-
     useEffect(() => {
         fetchUserWishlists();
-
     }, []);
 
     const fetchUserWishlists = async () => {
@@ -119,7 +116,6 @@ export const ProductItemBig = (props) => {
                                     </option>
                                 )) }
                             </select>
-
                         ) : (
                             <input
                             className='input-name'
