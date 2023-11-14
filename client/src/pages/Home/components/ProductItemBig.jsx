@@ -12,11 +12,13 @@ export const ProductItemBig = (props) => {
     const [useExistingWishlist, setUseExistingWishlist] = useState(false);
     const [selectedWishlist, setSelectedWishlist] = useState('');
 
+<<<<<<< Updated upstream
     console.log(props.imagePath);
 
+=======
+>>>>>>> Stashed changes
     useEffect(() => {
         fetchUserWishlists();
-
     }, []);
 
     const fetchUserWishlists = async () => {

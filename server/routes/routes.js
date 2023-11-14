@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/User');
 const Wishlist = require('../models/Wishlist');
+<<<<<<< Updated upstream
 const Products = require('../models/Product')
 
 const router = express();
@@ -13,6 +14,18 @@ router.get('/api/products', async (req, res) => {
         res.json({ products });
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch products' });
+=======
+const Product = require('../models/Product');
+
+const router = express();
+
+router.get('/api/products', async (req, res) => {
+    try {
+        const products = await Product.find({});
+        res.json({ products });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch Products' });
+>>>>>>> Stashed changes
     };
 });
 
