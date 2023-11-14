@@ -3,8 +3,8 @@ import "../styles/HomeCategorySection.css";
 import { ProductItemSmall } from "./ProductItemSmall";
 
 export const BestSellingProducts = (props) => {
-    const products = props.products && props.products.products ? props.products.products : [];
-    // console.log("best selling Products ", products);
+    const products = props.products && props.products ? props.products : [];
+    console.log("best selling Products ", products);
     const productItemSmall = Array.from({ length: products.length}, (_, index) => (
         <ProductItemSmall key={index} title={products[index].title} imagePath={products[index].imagePath}/>
     ));

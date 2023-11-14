@@ -7,8 +7,8 @@ const router = express();
 
 router.get('/api/products', async (req, res) => {
     try {
-        console.log("best ");
         const products = await Product.find({});
+        // console.log(products);
         // const bestSellingProducts = await Product.find({}).sort('-sold').limit(10);
         res.json({ products });
     } catch (error) {
