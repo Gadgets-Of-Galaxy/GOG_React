@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import "../styles/Header.css";
 import {
   faSearch,
@@ -36,6 +36,7 @@ export const Header = () => {
               <li>Home</li>
               <li>Shop</li>
               <li>Gadgets</li>
+              <li><Link to='/admin'>Admin</Link></li>
             </ul>
           </div>
         </div>

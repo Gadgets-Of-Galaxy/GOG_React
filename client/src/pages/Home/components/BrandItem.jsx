@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import "../styles/BrandItem.css";
 
 export const BrandItem = () => {
