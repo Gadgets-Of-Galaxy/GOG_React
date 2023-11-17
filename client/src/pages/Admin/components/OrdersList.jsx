@@ -1,5 +1,6 @@
 import "../styles/admin.css";
 import { AdminSidebar } from "./AdminSidebar";
+import {AdminOverview} from "./AdminOverview";
 
 export const OrdersList = ({ orders }) => {
     return (
@@ -7,6 +8,7 @@ export const OrdersList = ({ orders }) => {
             <AdminSidebar />
             <section className="home-section">
             <div className="home-content">
+                <AdminOverview />
                 <h2>Orders List:</h2>
                 <br />
                 <table className="table table-hover">

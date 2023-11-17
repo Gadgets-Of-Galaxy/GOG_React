@@ -38,6 +38,7 @@ export const ProductItemSmall = (props) => {
 
     const handleCreateNewWishlist = () => {
         setCreateNewWishlist(true);
+        setUseExistingWishlist(false);
     };
 
     const handleUseExistingWishlist = () => {
