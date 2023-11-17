@@ -18,12 +18,14 @@ import usersData from '../DumpDatabase/users.json';
 // import wishlists from '../DumpDatabase/wishlists.json';
 // import cartsData from '../DumpDatabase/carts.json';
 import ordersData from '../DumpDatabase/checkouts.json';
+import { Login } from './pages/Login_SignUp/components/Login';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/myAccount" element={<MyAccount/>} />
         <Route path='/admin' element={<AdminDashboard />} />
         <Route path='/admin/addProduct' element={<AddProduct />} />
