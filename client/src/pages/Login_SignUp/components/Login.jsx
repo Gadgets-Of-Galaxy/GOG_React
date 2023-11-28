@@ -40,7 +40,7 @@ export const Login = () => {
 
     return (
         <div>
-            <section>
+            <section className="login-section">
                 <div className="container">
                     <div className={`user ${isSignUp ? "signupBx" : "signinBx"}`}>
                         <div className="formBx">
