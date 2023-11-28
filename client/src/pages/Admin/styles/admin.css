@@ -118,11 +118,8 @@ table,
             border-radius: 10px;
             padding: 10px;
             white-space: nowrap;
-            /* Prevent text from wrapping */
             overflow: hidden;
-            /* Hide overflowing text */
             text-overflow: ellipsis;
-            /* Show an ellipsis (...) for truncated text */
         }
 
         td {
@@ -133,9 +130,7 @@ table,
             border-radius: 10px;
             padding: 10px;
             white-space: nowrap;
-            /* Prevent text from wrapping */
             overflow: hidden;
-            /* Hide overflowing text */
             text-overflow: ellipsis;
         }
 
@@ -177,13 +172,13 @@ table,
         td {
             border: none;
         }
-/* 
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-} */
+}
 
 .sidebar {
     position: fixed;

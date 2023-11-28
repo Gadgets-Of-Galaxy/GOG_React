@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-import './App.css';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // import { Login } from './pages/Login_SignUp/components/Login'
@@ -19,12 +19,14 @@ import usersData from '../DumpDatabase/users.json';
 // import cartsData from '../DumpDatabase/carts.json';
 import ordersData from '../DumpDatabase/checkouts.json';
 import { Login } from './pages/Login_SignUp/components/Login';
+import ProductDetailsPage from './pages/Home/components/ProductDetailsPage';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/products/:productId" component={ProductDetailsPage} />
         <Route path="/login" element={<Login/>} />
         <Route path="/myAccount" element={<MyAccount/>} />
         <Route path='/admin' element={<AdminDashboard />} />

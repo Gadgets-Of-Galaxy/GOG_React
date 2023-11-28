@@ -5,8 +5,6 @@ const Product = require('../models/Product');
 
 const router = express();
 
-const User = require('../models/User');
-
 router.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 

@@ -1,7 +1,8 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import favorite from "../assets/favorite.png";
 import "../styles/ProductItemSmall.css";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const ProductItemSmall = (props) => {
     const [showWishlistOptions, setShowWishlistOptions] = useState(false);
@@ -91,7 +92,7 @@ export const ProductItemSmall = (props) => {
     return (
         <div className="product-item-s">
             <div className="product-thumbnail">
-                <img src={props.imagePath}
+                <img src={ props.imagePath }
                     alt="product-thumbnail"
                     className="deal-image"
                 />
@@ -118,7 +119,7 @@ export const ProductItemSmall = (props) => {
                             </select>
                         ) : (
                             <input
-                            className='input-name'
+                                className='input-name'
                                 type="text"
                                 placeholder="Enter wishlist name"
                                 value={ wishlistName }
@@ -131,7 +132,9 @@ export const ProductItemSmall = (props) => {
             </div>
             <div className="product-content">
                 <div className="product-title-wrap">
-                    <h3 className="product-title">{props.title}</h3>
+                    <Link to={ `/product/${props._id}` } className="product-link">
+                        <h3 className="product-title">{ props.title }</h3>
+                    </Link>
                     <div className="product-price">
                         <span className="text-span">Rs.</span>2000
                     </div>
@@ -142,7 +145,6 @@ export const ProductItemSmall = (props) => {
                         <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e9d9ee08987e0ffb064bca_Star.svg"
                             alt="star"
                             className="product-star"
-
                         />
                         <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e9d9ee08987e0ffb064bca_Star.svg"
                             alt="star"
@@ -160,7 +162,7 @@ export const ProductItemSmall = (props) => {
                 <div className="button-wrap">
                     <a href="#" className="primary-button cart-button border">
                         <div className="button-content">
-                                Add To Cart
+                            Add To Cart
                         </div>
                     </a>
                 </div>
