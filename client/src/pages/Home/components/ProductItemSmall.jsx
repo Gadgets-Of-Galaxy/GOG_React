@@ -18,8 +18,7 @@ export const ProductItemSmall = (props) => {
 
     const fetchUserWishlists = async () => {
         try {
-            // const userId = '654bce06b876608529edda9d';
-            const response = await axios.get('http://localhost:5000/api/wishlists/654bce06b876608529edda9d');
+            const response = await axios.get('http://localhost:5000/api/wishlists');
             if (response.status === 200) {
                 // console.log(response.data.wishlists[0]);
                 // console.log(response.data);
@@ -51,9 +50,7 @@ export const ProductItemSmall = (props) => {
     const handleSaveWishlist = async () => {
         if (createNewWishlist) {
             try {
-                const userId = '654bce06b876608529edda9d';
                 const response = await axios.post('http://localhost:5000/api/wishlists/create', {
-                    userId: userId,
                     name: wishlistName,
                 });
 

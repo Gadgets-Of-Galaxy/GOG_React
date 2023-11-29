@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/login.css";
 
+
 export const Login = () => {
     const [isSignUp, setIsSignUp] = useState(false);
     const [formData, setFormData] = useState({
@@ -23,9 +24,10 @@ export const Login = () => {
             if (isSignUp) {
                 endpoint = "/register";
             }
-            const response = await axios.post(`http://localhost:5000${endpoint}`, formData);
+            console.log(formData);
+            const response = await axios.post(`http://localhost:5000/api${endpoint}`, formData);
 
-            if (response.status === 200 || response.status === 201) {
+            if (response.status === 200) {
                 console.log(response.data.message);
             }
         } catch (error) {
