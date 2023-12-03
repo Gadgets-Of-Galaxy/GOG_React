@@ -2,6 +2,10 @@
 import "../styles/MyAccount.css";
 
 export const UserNavLinks = () => {
+
+    const handleLogout = () => {
+        localStorage.removeItem('loggedInUser');
+    };
     return (
         <div className="sidebar">
             <a href="/">
@@ -36,7 +40,7 @@ export const UserNavLinks = () => {
                     </a>
                 </li>
                 <li className="log_out">
-                    <a href="/logout">
+                    <a href="/" onClick={handleLogout}>
                         <i className='bx bx-log-out'></i>
                         <span className="links_name">Log out</span>
                     </a>

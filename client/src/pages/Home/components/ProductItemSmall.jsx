@@ -5,6 +5,13 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export const ProductItemSmall = (props) => {
+    const user = props.user;
+    const productId = props.product._id;
+    const imagePath = props.product.imagePath;
+    const price = props.product.price;
+    const productcode = props.product.productcode
+    const title = props.product.title
+    // console.log(props.product._id);
     const [showWishlistOptions, setShowWishlistOptions] = useState(false);
     const [wishlistName, setWishlistName] = useState('');
     const [createNewWishlist, setCreateNewWishlist] = useState(true);
@@ -18,7 +25,7 @@ export const ProductItemSmall = (props) => {
 
     const fetchUserWishlists = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/wishlists');
+            const response = await axios.get(`http://localhost:5000/api/wishlists/${user._id}`);
             if (response.status === 200) {
                 // console.log(response.data.wishlists[0]);
                 // console.log(response.data);
@@ -50,12 +57,15 @@ export const ProductItemSmall = (props) => {
     const handleSaveWishlist = async () => {
         if (createNewWishlist) {
             try {
-                const response = await axios.post('http://localhost:5000/api/wishlists/create', {
+                const response = await axios.post(`http://localhost:5000/api/wishlists/create/${user._id}`, {
                     name: wishlistName,
                 });
 
                 if (response.status === 200) {
                     console.log('Wishlist created successfully');
+                    fetchUserWishlists();
+                    const newWishlistId = response.data.wishlistId;
+                    addProductToWishlist(newWishlistId);
                 } else {
                     console.error('Failed to create wishlist.');
                 }
@@ -64,21 +74,7 @@ export const ProductItemSmall = (props) => {
             }
         } else {
             if (selectedWishlist) {
-                try {
-                    const productName = 'mobile';
-                    const response = await axios.post('http://localhost:5000/api/wishlists/addProduct', {
-                        wishlistId: selectedWishlist,
-                        productName: productName,
-                    });
-
-                    if (response.status === 200) {
-                        console.log('Product added to wishlist successfully');
-                    } else {
-                        console.error('Failed to add product to wishlist.');
-                    }
-                } catch (error) {
-                    console.error('Error while adding product to wishlist:', error);
-                }
+                addProductToWishlist(selectedWishlist);
             } else {
                 console.error('Please select a wishlist');
             }
@@ -86,10 +82,30 @@ export const ProductItemSmall = (props) => {
         setShowWishlistOptions(false);
     };
 
+    const addProductToWishlist = async (wishlistId) => {
+        try {
+            const response = await axios.post(`http://localhost:5000/api/wishlists/addProduct/${wishlistId}`, {
+                productId: productId, 
+                imagePath: imagePath,
+                price: price, 
+                productcode: productcode,
+                title: title
+            });
+
+            if (response.status === 200) {
+                console.log('Product added to wishlist successfully');
+            } else {
+                console.error('Failed to add product to wishlist.');
+            }
+        } catch (error) {
+            console.error('Error while adding product to wishlist:', error);
+        }
+    };
+
     return (
         <div className="product-item-s">
             <div className="product-thumbnail">
-                <img src={ props.imagePath }
+                <img src={ props.product.imagePath }
                     alt="product-thumbnail"
                     className="deal-image"
                 />
@@ -129,14 +145,14 @@ export const ProductItemSmall = (props) => {
             </div>
             <div className="product-content">
                 <div className="product-title-wrap">
-                    <Link to={ `/product/${props._id}` } className="product-link">
-                        <h3 className="product-title">{ props.title }</h3>
+                    <Link to={ `/product/${props.product._id}` } className="product-link">
+                        <h3 className="product-title">{ props.product.title }</h3>
                     </Link>
                     <div className="product-price">
-                        <span className="text-span">Rs.</span>2000
+                        <span className="text-span">Rs.</span>{props.product.price}
                     </div>
                 </div>
-                <div className="product-desc">Table with air purifier, stained veneer/black</div>
+                <div className="product-desc">{props.product.manufacturer}</div>
                 <div className="product-rating">
                     <div className="star-wrap">
                         <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e9d9ee08987e0ffb064bca_Star.svg"
@@ -154,7 +170,7 @@ export const ProductItemSmall = (props) => {
 
                         />
                     </div>
-                    <div className="total-rating">(121)</div>
+                    <div className="total-rating">({props.product.reviewed})</div>
                 </div>
                 <div className="button-wrap">
                     <a href="#" className="primary-button cart-button border">

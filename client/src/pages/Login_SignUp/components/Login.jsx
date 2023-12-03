@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "../styles/login.css";
 
 
-export const Login = () => {
+export const Login = ({ setLoginUser }) => {
+    const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
@@ -24,14 +26,21 @@ export const Login = () => {
             if (isSignUp) {
                 endpoint = "/register";
             }
-            console.log(formData);
             const response = await axios.post(`http://localhost:5000/api${endpoint}`, formData);
 
             if (response.status === 200) {
-                console.log(response.data.message);
+                // console.log(response.data);
+                const user = response.data.user;
+                setLoginUser(user);
+                alert(response.data.message);
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                // window.location.href = '/';
+                // navigate('/', { state: { loginuser: response.data.user } });
+                navigate('/myAccount');
             }
         } catch (error) {
             console.error("Error:", error.response.data.message);
+            alert(error.response.data.message)
         }
     };
 

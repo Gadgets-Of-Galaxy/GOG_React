@@ -3,7 +3,7 @@
     "$oid": "6442336d45318afadbd6b66c"
   },
   "productCode": "ma10",
-  "title": "Apple iPhone 14 Pro Max (256GB, Deep Purple)",
+  "name": "Apple iPhone 14 Pro Max (256GB, Deep Purple)",
   "imagePath": "images/mobiles/apple/ma10.webp",
   "imagethumbnail1": "images/mobiles/apple/ma11.webp",
   "imagethumbnail2": "images/mobiles/apple/ma12.webp",
@@ -21,13 +21,14 @@
   "brand": "apple",
   "manufacturer": "Appario Retail Private Ltd",
   "available": true,
-  "category": "64443685182c65e9a4d6a6f6"
+  "category": "64443685182c65e9a4d6a6f6",
+  "title":"Mobiles"
 },{
   "_id": {
     "$oid": "644401e0c2c4ccd69b5154d4"
   },
   "productCode": "mo30",
-  "title": "Oppo A76 (6GB RAM ,256GB, Glowing Black)",
+  "name": "Oppo A76 (6GB RAM ,256GB, Glowing Black)",
   "imagePath": "images/mobiles/oppo/mo30.webp",
   "imagethumbnail1": "images/mobiles/oppo/mo31.webp",
   "imagethumbnail2": "images/mobiles/oppo/mo32.webp",
@@ -45,13 +46,14 @@
   "brand": "Oppo",
   "manufacturer": "Appariao Retail Private Ltd",
   "available": true,
-  "category": "641055d82b79b731a80f92c5"
+  "category": "641055d82b79b731a80f92c5",
+  "title":"Mobiles"
 },{
   "_id": {
     "$oid": "6444084ac2c4ccd69b5154d6"
   },
   "productCode": "mo10",
-  "title": "Oppo A16 (4GB RAM, 64GB, Royal Gold)",
+  "name": "Oppo A16 (4GB RAM, 64GB, Royal Gold)",
   "imagePath": "images/mobiles/oppo/mo10.webp",
   "imagethumbnail1": "images/mobiles/oppo/mo11.webp",
   "imagethumbnail2": "images/mobiles/oppo/mo12.webp",
@@ -69,13 +71,14 @@
   "brand": "Oppo",
   "manufacturer": "Appariao Retail Private Ltd",
   "available": true,
-  "category": "641055d82b79b731a80f92c5"
+  "category": "641055d82b79b731a80f92c5",
+  "title":"Mobiles"
 },{
   "_id": {
     "$oid": "64440c65c2c4ccd69b5154d8"
   },
   "productCode": "ms10",
-  "title": "SAMSUNG Galaxy S22 5G (8GB RAM, 256GB, Green)",
+  "name": "SAMSUNG Galaxy S22 5G (8GB RAM, 256GB, Green)",
   "imagePath": "images/mobiles/samsung/ms10.webp",
   "imagethumbnail1": "images/mobiles/samsung/ms11.webp",
   "imagethumbnail2": "images/mobiles/samsung/ms12.webp",
@@ -93,13 +96,14 @@
   "brand": "Samsung",
   "manufacturer": "Appariao Retail Private Ltd",
   "available": true,
-  "category": "641055d82b79b731a80f92c5"
+  "category": "641055d82b79b731a80f92c5",
+  "title":"Mobiles"
 },{
   "_id": {
     "$oid": "64440e83c2c4ccd69b5154df"
   },
   "productCode": "asa10",
-  "title": "Apple Airpods (3rd Generation)with Lightning Charging Case",
+  "Name": "Apple Airpods (3rd Generation)with Lightning Charging Case",
   "imagePath": "images/earphones/apple/asa10.webp",
   "imagethumbnail1": "images/earphones/apple/asa11.webp",
   "imagethumbnail2": "images/earphones/apple/asa12.webp",
@@ -117,13 +121,15 @@
   "brand": "Apple",
   "manufacturer": "Apple store",
   "available": true,
-  "category": "641056312b79b731a80f92c8"
+  "category": "641056312b79b731a80f92c8",
+  "title":"Audio Store"
+  
 },{
   "_id": {
     "$oid": "64441126c2c4ccd69b5154e0"
   },
   "productCode": "asb10",
-  "title": "boAt Airdopes 113 Wireless Gaming Earbuds",
+  "name": "boAt Airdopes 113 Wireless Gaming Earbuds",
   "imagePath": "images/earphones/boat/asb10.webp",
   "imagethumbnail1": "images/earphones/boat/asb11.webp",
   "imagethumbnail2": "images/earphones/boat/asb12.webp",
@@ -141,13 +147,14 @@
   "brand": "Boat",
   "manufacturer": "Boat RockerZ",
   "available": true,
-  "category": "641056312b79b731a80f92c8"
+  "category": "641056312b79b731a80f92c8",
+  "title":"Audio Store"
 },{
   "_id": {
     "$oid": "6444252a867e4ad200ca2c89"
   },
   "productCode": "las20",
-  "title": "ASUS TUF Gaming A15 FA506QM-HN124W AMD Ryzen 9'",
+  "name": "ASUS TUF Gaming A15 FA506QM-HN124W AMD Ryzen 9'",
   "imagePath": "images/Laptops/Asus/las20.avif",
   "imagethumbnail1": "images/Laptops/Asus/las21.avif",
   "imagethumbnail2": "images/Laptops/Asus/las22.avif",
@@ -165,13 +172,14 @@
   "brand": "asus",
   "manufacturer": "mukesh Retail Private Ltd",
   "available": true,
-  "category": "641055f82b79b731a80f92c6"
+  "category": "641055f82b79b731a80f92c6",
+  "title":"Laptops"
 },{
   "_id": {
     "$oid": "6444c5d3456627138f0e3c77"
   },
   "productCode": "asb30",
-  "title": "boAt Bassheads 100 Wired Earphone",
+  "name": "boAt Bassheads 100 Wired Earphone",
   "imagePath": "images/earphones/boat/asb30.webp",
   "imagethumbnail1": "images/earphones/boat/asb31.webp",
   "imagethumbnail2": "images/earphones/boat/asb32.webp",
@@ -189,13 +197,14 @@
   "brand": "Boat",
   "manufacturer": "Boat RockerZ",
   "available": true,
-  "category": "641056312b79b731a80f92c8"
+  "category": "641056312b79b731a80f92c8",
+  "title":"Audio Store"
 },{
   "_id": {
     "$oid": "6444c777456627138f0e3c78"
   },
   "productCode": "ass20",
-  "title": "Sony WF-1000XM4 Wireless Noise Cancelling Earbuds",
+  "name": "Sony WF-1000XM4 Wireless Noise Cancelling Earbuds",
   "imagePath": "images/earphones/sony/ass20.avif",
   "imagethumbnail1": "images/earphones/sony/ass21.avif",
   "imagethumbnail2": "images/earphones/sony/ass22.avif",
@@ -213,13 +222,14 @@
   "brand": "Sony",
   "manufacturer": "Sony store",
   "available": true,
-  "category": "641056312b79b731a80f92c8"
+  "category": "641056312b79b731a80f92c8",
+  "title":"Audio Store"
 },{
   "_id": {
     "$oid": "6444cb1e456627138f0e3c7c"
   },
   "productCode": "la20",
-  "title": "Apple MacBook Pro 14 2021'",
+  "name": "Apple MacBook Pro 14 2021'",
   "imagePath": "images/Laptops/Apple/la20.avif",
   "imagethumbnail1": "images/Laptops/Apple/la21.avif",
   "imagethumbnail2": "images/Laptops/Apple/la22.avif",
@@ -237,13 +247,14 @@
   "brand": "apple",
   "manufacturer": "mukesh Retail Private Ltd",
   "available": true,
-  "category": "641055f82b79b731a80f92c6"
+  "category": "641055f82b79b731a80f92c6",
+  "title":"Laptops"
 },{
   "_id": {
     "$oid": "6444cc85456627138f0e3c7d"
   },
   "productCode": "la30",
-  "title": "Apple MacBook Air 2020'",
+  "name": "Apple MacBook Air 2020'",
   "imagePath": "images/Laptops/Apple/la30.avif",
   "imagethumbnail1": "images/Laptops/Apple/la31.avif",
   "imagethumbnail2": "images/Laptops/Apple/la32.avif",
@@ -261,13 +272,14 @@
   "brand": "apple",
   "manufacturer": "mukesh Retail Private Ltd",
   "available": true,
-  "category": "641055f82b79b731a80f92c6"
+  "category": "641055f82b79b731a80f92c6",
+  "title":"Laptops"
 },{
   "_id": {
     "$oid": "6444d21b456627138f0e3c80"
   },
   "productCode": "ws10",
-  "title": "SAMSUNG Galaxy Watch5 Smartwatch with Activity Tracker (40mm Super AMOLED Display, Water Resistant, Purple Strap)",
+  "name": "SAMSUNG Galaxy Watch5 Smartwatch with Activity Tracker (40mm Super AMOLED Display, Water Resistant, Purple Strap)",
   "imagePath": "images/wearables/samsung/ws10.avif",
   "imagethumbnail1": "images/wearables/samsung/ws11.avif",
   "imagethumbnail2": "images/wearables/samsung/ws12.avif",
@@ -285,13 +297,14 @@
   "brand": "Samsung",
   "manufacturer": "Mukesh Retail Private Ltd",
   "available": true,
-  "category": "6410560c2b79b731a80f92c7"
+  "category": "6410560c2b79b731a80f92c7",
+  "title":"wearables"
 },{
   "_id": {
     "$oid": "6444d398456627138f0e3c83"
   },
   "productCode": "wv10",
-  "title": "Garmin vívosmart 5 Fitness Tracker (Bluetooth) (5ATM Water Resistant, 010-02645-20, Black, Silicone Strap)",
+  "name": "Garmin vívosmart 5 Fitness Tracker (Bluetooth) (5ATM Water Resistant, 010-02645-20, Black, Silicone Strap)",
   "imagePath": "images/wearables/vivo/wv10.avif",
   "imagethumbnail1": "images/wearables/vivo/wv11.avif",
   "imagethumbnail2": "images/wearables/vivo/wv12.avif",
@@ -309,13 +322,14 @@
   "brand": "Vivo",
   "manufacturer": "Mukesh Retail Private Ltd",
   "available": true,
-  "category": "6410560c2b79b731a80f92c7"
+  "category": "6410560c2b79b731a80f92c7",
+  "title":"Wearables"
 },{
   "_id": {
     "$oid": "6444d946456627138f0e3c84"
   },
   "productCode": "wn10",
-  "title": "Noise NoiseFit Fusion Hybrid Smartwatch (44 mm) (Advanced Health Tracking, wrb-sw-fusion-lthr, Vintage Brown, Leather Strap)",
+  "name": "Noise NoiseFit Fusion Hybrid Smartwatch (44 mm) (Advanced Health Tracking, wrb-sw-fusion-lthr, Vintage Brown, Leather Strap)",
   "imagePath": "images/wearables/noise/wn10.avif",
   "imagethumbnail1": "images/wearables/noise/wn11.avif",
   "imagethumbnail2": "images/wearables/noise/wn12.avif",
@@ -333,13 +347,14 @@
   "brand": "noise",
   "manufacturer": "Mukesh Retail Private Ltd",
   "available": true,
-  "category": "6410560c2b79b731a80f92c7"
+  "category": "6410560c2b79b731a80f92c7",
+  "title":"Wearables"
 },{
   "_id": {
     "$oid": "6444e21a456627138f0e3c89"
   },
   "productCode": "sc10",
-  "title": "CP PLUS Ezykam Smart CCTV Security Camera (Google Assistant Support, White)'",
+  "name": "CP PLUS Ezykam Smart CCTV Security Camera (Google Assistant Support, White)'",
   "imagePath": "images/smart/cpplus/sc10.avif",
   "imagethumbnail1": "images/smart/cpplus/sc11.avif",
   "imagethumbnail2": "images/smart/cpplus/sc12.avif",
@@ -357,13 +372,14 @@
   "brand": "CP PLUS",
   "manufacturer": " rakesh Retail Private Ltd",
   "available": true,
-  "category": "641056f32b79b731a80f92ca"
+  "category": "641056f32b79b731a80f92ca",
+  "title":"Smart Gadgets"
 },{
   "_id": {
     "$oid": "6444e35f456627138f0e3c8a"
   },
   "productCode": "sq10",
-  "title": "Qubo Smart Door Lock (Two-Layer Authentication, OC- HLD01BL1, Black)",
+  "name": "Qubo Smart Door Lock (Two-Layer Authentication, OC- HLD01BL1, Black)",
   "imagePath": "images/smart/qubo/sq10.avif",
   "imagethumbnail1": "images/smart/qubo/sq11.avif",
   "imagethumbnail2": "images/smart/qubo/sq12.avif",
@@ -381,13 +397,14 @@
   "brand": "QUBO",
   "manufacturer": " rakesh Retail Private Ltd",
   "available": true,
-  "category": "641056f32b79b731a80f92ca"
+  "category": "641056f32b79b731a80f92ca",
+  "title":"Smart Gadgets"
 },{
   "_id": {
     "$oid": "6444e4b5456627138f0e3c8b"
   },
   "productCode": "sp10",
-  "title": "Portronics Splug 16 Alexa and Google Assistant Supported ",
+  "name": "Portronics Splug 16 Alexa and Google Assistant Supported ",
   "imagePath": "images/smart/portonics/sp10.avif",
   "imagethumbnail1": "images/smart/portonics/sp11.avif",
   "imagethumbnail2": "images/smart/portonics/sp12.avif",
@@ -405,13 +422,14 @@
   "brand": "Portonics",
   "manufacturer": " rakesh Retail Private Ltd",
   "available": true,
-  "category": "641056f32b79b731a80f92ca"
+  "category": "641056f32b79b731a80f92ca",
+  "title":"Smart Gadgets"
 },{
   "_id": {
     "$oid": "6444e686456627138f0e3c8e"
   },
   "productCode": "sj10",
-  "title": "Juvo Wonderlite Battery Powered Smart Motion Sensor Torch (SW1007-WL, White)",
+  "name": "Juvo Wonderlite Battery Powered Smart Motion Sensor Torch (SW1007-WL, White)",
   "imagePath": "images/smart/juvo/sj10.avif",
   "imagethumbnail1": "images/smart/juvo/sj11.avif",
   "imagethumbnail2": "images/smart/juvo/sj12.avif",
@@ -429,5 +447,6 @@
   "brand": "Juvo",
   "manufacturer": " rakesh Retail Private Ltd",
   "available": true,
-  "category": "641056f32b79b731a80f92ca"
+  "category": "641056f32b79b731a80f92ca",
+  "title":"Smart Gadgets"
 }]

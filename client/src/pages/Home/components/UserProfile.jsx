@@ -1,6 +1,6 @@
 import "../styles/MyAccount.css"
 
-export const UserProfile = () => {
+export const UserProfile = ({user}) => {
     return (
         <div>
             <section className="home-section">
@@ -20,39 +20,39 @@ export const UserProfile = () => {
                     <br />
                     <div id="profile-info">
                         <div className="flex-item ">
-                            <p className='key'>Full Name</p>
+                            <p className='key'>Name</p>
                             <p className='value'>
-                                Unknown
+                                {user.name}
                             </p>
                         </div>
                         <div className="flex-item ">
                             <p className='key'>Email ID</p>
                             <p className='value'>
-                                Unknown@gmail.com
+                                {user.email}
                             </p>
                         </div>
                         <div className="flex-item ">
                             <p className='key'>Mobile</p>
                             <p className='value'>
-                                9988776655
+                                {user.mobileNumber}
                             </p>
                         </div>
                         <div className="flex-item ">
                             <p className='key'>Gender</p>
                             <p className='value'>
-                                Male
+                                {user.gender}
                             </p>
                         </div>
                         <div className="flex-item ">
                             <p className='key'>Date of Birth</p>
                             <p className='value'>
-                                01-01-2000
+                                {user.dob}
                             </p>
                         </div>
                         <div className="flex-item ">
                             <p className='key'>Location</p>
                             <p className='value'>
-                                Sricity
+                                {user.location}
                             </p>
                         </div>
                     </div>

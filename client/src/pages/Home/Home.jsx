@@ -10,9 +10,11 @@ import { BestSellingProducts } from "./components/BestSellingProducts";
 import { Footer } from "../CommonComponents/components/Footer";
 import axios from "axios";
 
-export const Home = () => {
+export const Home = ({ loginuser }) => {
   const [products, setProducts] = useState([]);
   const [bestSellingProducts, setBestSellingProducts] = useState([]);
+
+  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -50,22 +52,37 @@ export const Home = () => {
   }, []);
   // const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
   //   setBestSellingProducts(sortedProducts);
-  
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/userData');
+        setUser(response.data.user);
+        console.log("User data from sesssion",user);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
   
 
   return (
     <div>
-      <Header />
+
+      <Header user={loginuser}/>
       <Slider />
       <ShopCategories />
       {/* best deals - based on discount
           popular - based on likes
           best selling - based on sold */}
-      <HomeBestDeals products={products} />
+      <HomeBestDeals products={products} user={loginuser}/>
       {/* <BrandSection /> */}
       {/* <PopularProducts /> */}
       {/* <HomeCategorySection products={products} /> */}
-      <BestSellingProducts products={bestSellingProducts} />
+      {/* <BestSellingProducts products={bestSellingProducts} /> */}
       <Footer />
     </div>
   );

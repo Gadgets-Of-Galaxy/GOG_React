@@ -3,9 +3,12 @@ import "../styles/HomeCategorySection.css";
 import { ProductItemSmall } from "./ProductItemSmall";
 
 export const HomeBestDeals = (props) => {
+    const user = props.user;
+    // console.log(user);
     const products = props.products && props.products.products ? props.products.products : [];
     const productItemSmall = Array.from({ length: products.length}, (_, index) => (
-        <ProductItemSmall key={index} title={products[index].title} imagePath={products[index].imagePath}/>
+        // <ProductItemSmall key={index} title={products[index].title} imagePath={products[index].imagePath} user={user} productId={products[index]._id}/>
+        <ProductItemSmall key={index} user={user} product={products[index]}/>
     ));
     return (    
         <section className="HomeBestDeals">

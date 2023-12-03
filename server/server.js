@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-app.use(express.json());
 const session = require('express-session');
-const cookieParser = require("cookie-parser");
+app.use(express.json());
 
 const router = require('./routes/routes');
 const cors = require('cors');
@@ -15,8 +14,11 @@ app.use(session({
     secret: 'GOG_secret_key',
     resave: false,
     saveUninitialized: false,
-    cookie: {maxAge: 180 * 60 * 1000}
+    cookie: {
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    }
 }));
+
 app.use(cors());
 
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true })

@@ -1,13 +1,13 @@
 // import React from "react";
 import {UserNavLinks} from "./UserNavLinks";
-import {UserProfile} from "./UserProfile";
+import {EditProfileComponent} from "./EditProfileComponent";
 import "../styles/MyAccount.css"
 
-export const MyAccount = ({user}) => {
+export const EditProfile = ({user}) => {
     return (
         <div className="myAccount">
             <UserNavLinks />
-            <UserProfile user={user}/>
+            <EditProfileComponent user={user}/>
         </div>
     );
 }

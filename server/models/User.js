@@ -19,18 +19,22 @@ const userSchema = Schema({
     mobileNumber: {
         type: Number,
         required: false,
+        default: null,
     },
     gender: {
         type: String,
         required: false,
+        default: null,
     },
     dob: {
         type: String,
         required: false,
+        default: null,
     },
     location: {
         type: String,
         required: false,
+        default: null,
     },
     isActive: {
         type: Boolean,
@@ -53,17 +57,13 @@ const userSchema = Schema({
         timestamps: true
     })
 
-userSchema.methods.encryptPassword = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
-};
-
-userSchema.methods.validPassword = function (candidatePassword) {
-    if (this.password != null) {
+    userSchema.methods.encryptPassword = function(password) {
+        return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
+    };
+    
+    userSchema.methods.validPassword = function(candidatePassword) {
         return bcrypt.compareSync(candidatePassword, this.password);
-    } else {
-        return false;
-    }
-};
+    };
 
 module.exports = mongoose.model("User", userSchema);
 
