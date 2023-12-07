@@ -31,6 +31,8 @@ import axios from "axios";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [users, setUsers] = useState(null);
+  const [orders, setOrders] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
   const [loginuser, setLoginUser] = useState(storedUser || null);
 
@@ -57,6 +59,30 @@ function App() {
     }
   }, [loginuser]);
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/users/');
+        setUsers(response.data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+    fetchUsers();
+  }, []);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/orders/');
+        setOrders(response.data);
+      } catch (error) {
+        console.error('Error fetching Orders:', error);
+      }
+    };
+    fetchOrders();
+  }, []);
+
   return (
     <Router>
     <div>
@@ -70,12 +96,13 @@ function App() {
         <Route path='/cart' element={<MyCart user={user}/>} />
         <Route path='/myOrders' element={<MyOrders user={loginuser}/>} />
         <Route path="/category" element={<Category categories={Categorydata} products={productsData}/>} />
+
+
         <Route path='/admin' element={<AdminDashboard />} />
-        
-        <Route path='/admin/addProduct' element={<AddProduct />} />
         <Route path='/admin/productDetails' element={<Products products={productsData} />}/>
-        <Route path='/admin/userDetails' element={<Users users={usersData} />} />
-        <Route path='/admin/ordersList' element={<OrdersList orders={ordersData} />} />
+        <Route path='/admin/userDetails' element={<Users users={users} />} />
+        <Route path='/admin/ordersList' element={<OrdersList orders={orders} />} />
+        <Route path='/admin/addProduct' element={<AddProduct />} />
         <Route path='/admin/messages' element={<AdminMessages messages={messagesData} />} />
       </Routes>
       </div>

@@ -30,18 +30,6 @@
     --trans-background: background-color .3s;
     --trans-color: color .3s;
 }
-/* 
-* {
-    margin: 0;
-    padding: 0;
-}
-
-*,
-::before,
-::after {
-    box-sizing: border-box;
-} */
-
 
 body {
     font-family: 'Rubik', sans-serif;
@@ -172,14 +160,7 @@ table,
         td {
             border: none;
         }
-/* 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-} */
-
+        
 .sidebar {
     position: fixed;
     height: 100%;
@@ -533,7 +514,6 @@ nav .profile-details i {
     background: var(--dark-color);
 }
 
-/* Right box */
 .home-content .sales-boxes .top-sales {
     width: 55%;
     background: #fff;

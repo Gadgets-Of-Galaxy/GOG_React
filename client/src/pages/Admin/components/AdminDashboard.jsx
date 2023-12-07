@@ -5,7 +5,7 @@ import {AdminOverview} from "./AdminOverview";
 export const AdminDashboard = () => {
     return (
         <div>
-            <AdminSidebar />
+            <AdminSidebar activeLink="adminDashboard"/>
             <section className="home-section">
                 <nav>
                     <div className="sidebar-button">

@@ -210,7 +210,7 @@ router.get('/api/wishlists/:userId', async (req, res) => {
     // console.log(userId);
     try {
         const wishlists = await Wishlist.find({ user: userId });
-        if(wishlists){
+        if (wishlists) {
             res.json({ wishlists });
         }
     } catch (error) {
@@ -221,7 +221,7 @@ router.get('/api/wishlists/:userId', async (req, res) => {
 router.post('/api/wishlists/create/:id', async (req, res) => {
     const wishlistName = req.body.name;
     const userId = req.params.id;
-    
+
     try {
         const newWishlist = new Wishlist({ name: wishlistName, user: userId });
         await newWishlist.save();
@@ -237,8 +237,8 @@ router.post('/api/wishlists/create/:id', async (req, res) => {
 });
 
 router.post('/api/wishlists/addProduct/:wishlistId', async (req, res) => {
-    const  wishlistId  = req.params.wishlistId;
-    const  productId  = req.body.productId;
+    const wishlistId = req.params.wishlistId;
+    const productId = req.body.productId;
     try {
         const wishlist = await Wishlist.findById(wishlistId);
         if (!wishlist) {
@@ -307,7 +307,24 @@ router.get('/api/users/:id', async (req, res) => {
     }
 });
 
+router.get('/api/users', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
-
+router.get('/api/orders', async (req, res) => {
+    try {
+        const checkouts = await Checkout.find();
+        res.status(200).json(checkouts);
+    } catch (error) {
+        console.error('Error fetching orders:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 module.exports = router;

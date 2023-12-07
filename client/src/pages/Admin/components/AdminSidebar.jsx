@@ -1,6 +1,6 @@
 import "../styles/admin.css";
 
-export const AdminSidebar = () => {
+export const AdminSidebar = ({ activeLink }) => {
     return (
         <div className="sidebar">
             <a href="/admin">
@@ -11,43 +11,44 @@ export const AdminSidebar = () => {
             </a>
             <ul className="nav-links">
                 <li>
-                    <a href="/admin" className="active">
+                    <a href="/admin" className={activeLink === "adminDashboard" ? "active" : ""}>
                         <i className='bx bx-grid-alt'></i>
                         <span className="links_name">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/productDetails">
+                    <a href="/admin/productDetails" className={activeLink === "productslist" ? "active" : ""}>
                         <i className='bx bx-box'></i>
                         <span className="links_name">Products</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/userDetails">
-                        <i className='bx bx-heart'></i>
-                        <span className="links_name">Users</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/admin/ordersList">
-                        <i className='bx bx-list-ul'></i>
-                        <span className="links_name">Order list</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/admin/addProduct">
+                    <a href="/admin/addProduct" className={activeLink === "addproduct" ? "active" : ""}>
                         <i className='bx bx-pie-chart-alt-2'></i>
                         <span className="links_name">Add Product</span>
                     </a>
                 </li>
                 <li>
+                    <a href="/admin/userDetails" className={activeLink === "userslist" ? "active" : ""}>
+                        <i className='bx bx-heart'></i>
+                        <span className="links_name">Users List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/ordersList" className={activeLink === "orderslist" ? "active" : ""}>
+                        <i className='bx bx-list-ul'></i>
+                        <span className="links_name">Orders List</span>
+                    </a>
+                </li>
+                
+                {/* <li>
                     <a href="/admin">
                         <i className='bx bx-user'></i>
                         <span className="links_name">Employees</span>
                     </a>
-                </li>
+                </li> */}
                 <li>
-                    <a href="/admin/messages">
+                    <a href="/admin/messages" className={activeLink === "messageslist" ? "active" : ""}>
                         <i className='bx bx-message'></i>
                         <span className="links_name">Messages</span>
                     </a>

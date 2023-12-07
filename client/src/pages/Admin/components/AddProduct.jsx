@@ -4,7 +4,7 @@ import { AdminSidebar } from "./AdminSidebar";
 export const AddProduct = () => {
     return (
         <div>
-            <AdminSidebar />
+            <AdminSidebar activeLink="addproduct"/>
             <section className="home-section">
                 <nav>
                     <div className="sidebar-button">
@@ -101,7 +101,7 @@ export const AddProduct = () => {
                                 <input placeholder="Category" type="text" className="form-control" id="category" name="category"/>
                             </div>
                             <div className="button-group d-flex flex-column mt-3" id="btn-group">
-                                <input type="submit" value="Add Product" className="button"/>
+                                <input type="submit" value="Add Product" className="add-button"/>
                             </div>
                         </form>
                 </div>

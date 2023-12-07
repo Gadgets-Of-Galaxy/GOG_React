@@ -1,34 +1,21 @@
-import "../styles/admin.css";
+import "../styles/adminLists.css"
 import { AdminSidebar } from "./AdminSidebar";
 import {AdminOverview} from "./AdminOverview";
 
 export const Products = ({ products }) => {
     return (
         <div>
-            <AdminSidebar />
-            <section className="home-section">
-                <nav>
-                    <div className="sidebar-button">
-                        <i className='bx bx-menu sidebarBtn'></i>
-                        <span className="dashboard">Products</span>
-                    </div>
-                    <div className="search-box">
-                        <input type="text" placeholder="Search..." />
-                        <i className='bx bx-search'></i>
-                    </div>
-                </nav>
-
-                <div className="home-content">
-                    <AdminOverview/>
-
-                    <h2>Products Details:</h2>
+            <AdminSidebar activeLink="productslist"/>
+            <section className="orders-section">
+                <div className="orders-content">
+                    <h2 className="orders-heading">Product Details:</h2>
                     <br />
-                    <table className="table table-hover">
+                    <table className="orders-table">
                         <thead>
                             <tr>
                                 <th><b>Product Image</b></th>
-                                <th><b>Productcode</b></th>
-                                <th><b>Product name</b></th>
+                                <th><b>Product Code</b></th>
+                                <th><b>Product Name</b></th>
                                 <th><b>Brand</b></th>
                                 <th><b>Sold</b></th>
                                 <th><b>Available</b></th>
@@ -39,9 +26,9 @@ export const Products = ({ products }) => {
                         </thead>
                         <tbody>
                             { products.map((product) => (
-                                <tr key={ product._id }>
+                                <tr key={ product._id } className="orders-row">
                                     <td>
-                                        <img src={ `/${product.imagePath}` } alt="img" />
+                                        <img src={ `/${product.imagePath}` } alt="Product" className="product-image" />
                                     </td>
                                     <td>{ product.productCode }</td>
                                     <td>{ product.title }</td>
@@ -52,7 +39,7 @@ export const Products = ({ products }) => {
                                     <td>{ product.price }</td>
                                     <td>
                                         <a href={ `/admin/deleteProduct/${product._id}` }>
-                                            <button name="delete" type="submit">Delete</button>
+                                            <button className="delete-button" type="submit">Delete</button>
                                         </a>
                                     </td>
                                 </tr>

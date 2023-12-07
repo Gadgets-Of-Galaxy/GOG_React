@@ -1,0 +1,43 @@
+.orders-section {
+    display: flex;
+}
+
+.orders-content {
+    margin-left: 17vw;
+}
+
+.orders-table {
+    width: 20vw;
+    border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.orders-table th {
+    background-color: #f2f2f2;
+}
+
+.product-image {
+    width: 80%;
+    height: 1005;
+    object-fit: cover;
+}
+
+.delete-button, .reply-button {
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover, .reply-button:hover {
+    background-color: #59ab5e;
+}

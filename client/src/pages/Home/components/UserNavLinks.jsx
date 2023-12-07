@@ -25,7 +25,7 @@ export const UserNavLinks = ({ activeLink }) => {
                 </li>
                 <li>
                     <a href="/editProfile"
-                    className={activeLink === " EditProfile" ? "active" : ""}
+                    className={activeLink === "EditProfile" ? "active" : ""}
                     >
                         <i className='bx bx-box'></i>
                         <span className="links_name">Edit Profile</span>
@@ -38,7 +38,7 @@ export const UserNavLinks = ({ activeLink }) => {
                     </a>
                 </li>
                 <li>
-                    <a href="/wishlist" className={activeLink === " Wishlist" ? "active" : ""}>
+                    <a href="/wishlist" className={activeLink === "Wishlist" ? "active" : ""}>
                         <i className='bx bx-book-alt'></i>
                         <span className="links_name">Favourites</span>
                     </a>
