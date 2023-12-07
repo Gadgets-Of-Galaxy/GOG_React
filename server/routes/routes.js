@@ -91,6 +91,7 @@ router.get('/api/products/:id', async (req, res) => {
 
 router.post('/api/carts/addToCart', async (req, res) => {
     const { productId, userId } = req.body;
+    console.log(req.body);
 
     try {
         let userCart = await Cart.findOne({ user: userId });
@@ -129,23 +130,28 @@ router.post('/api/carts/addToCart', async (req, res) => {
 });
 
 
-router.delete('/api/wishlists/:userId/removeProduct/:productId', async (req, res) => {
-    const { userId, productId } = req.params;
+router.delete('/api/wishlists/:wishlistId/removeProduct/:productId', async (req, res) => {
+    const { wishlistId, productId } = req.params;
+    
     try {
-        let userWishlist = await Wishlist.findOne({ user: userId });
+        let userWishlist = await Wishlist.findById(wishlistId);
         if (!userWishlist) {
             return res.status(404).json({ error: 'Wishlist not found' });
         }
+        
         const productIndex = userWishlist.items.findIndex(item => item._id.toString() === productId);
         if (productIndex === -1) {
             return res.status(404).json({ error: 'Product not found in wishlist' });
         }
+        
         userWishlist.items.splice(productIndex, 1);
         userWishlist.totalQty -= 1;
+        
         if (userWishlist.items.length === 0) {
-            await Wishlist.findByIdAndDelete(userWishlist._id);
+            await Wishlist.findByIdAndDelete(wishlistId);
             return res.status(200).json({ message: 'Wishlist deleted as no products are left' });
         }
+        
         await userWishlist.save();
         res.status(200).json({ message: 'Product removed from wishlist successfully' });
     } catch (error) {
@@ -153,6 +159,7 @@ router.delete('/api/wishlists/:userId/removeProduct/:productId', async (req, res
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
 
 router.get('/api/carts/:userId', async (req, res) => {
     const userId = req.params.userId;

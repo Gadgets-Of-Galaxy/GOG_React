@@ -69,6 +69,7 @@ export const ProductItemSmall = (props) => {
                     fetchUserWishlists();
                     const newWishlistId = response.data.wishlistId;
                     addProductToWishlist(newWishlistId);
+                    setWishlistName('');
                 } else {
                     console.error('Failed to create wishlist.');
                 }
@@ -163,7 +164,13 @@ export const ProductItemSmall = (props) => {
                                 onChange={ (e) => setWishlistName(e.target.value) }
                             />
                         ) }
-                        <button onClick={ handleSaveWishlist } className='save-btn'>Save to Wishlist</button>
+                        <button onClick={ handleSaveWishlist } className='save-btn'>
+                            { !useExistingWishlist ? (
+                                <span><i className="fas fa-plus"></i> Create Wishlist</span>
+                            ) : (
+                                <span><i className="fas fa-list-alt"></i> Save to Wishlist</span>
+                            ) }
+                        </button>
                     </div>
                 ) }
             </div>

@@ -33,9 +33,10 @@ export const WishlistComponent = ({ user }) => {
         }
     };
 
-    const removeFromWishlist = async (item) => {
+    const removeFromWishlist = async (item, wishlistId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/wishlists/${user._id}/removeProduct/${item._id}`);
+            // console.log(wishlistId, item._id);
+            const response = await axios.delete(`http://localhost:5000/api/wishlists/${wishlistId}/removeProduct/${item._id}`);
             if (response.status === 200) {
                 setWishlists(prevWishlists => {
                     const updatedWishlists = prevWishlists.map(wishlist => {
@@ -79,7 +80,7 @@ export const WishlistComponent = ({ user }) => {
                                             <span className="wishlist-price">{item.price}</span>
                                             <div className="wishlist-actions">
                                                 <button onClick={() => addToCart(item)}>Add to Cart</button>
-                                                <button onClick={() => removeFromWishlist(item)}>Remove</button>
+                                                <button onClick={() => removeFromWishlist(item, wishlist._id)}>Remove</button>
                                             </div>
                                         </li>
                                     )) }
