@@ -110,7 +110,7 @@ export const EditProfileComponent = ({ user }) => {
                             />
                         </div>
                         <div className="button-group d-flex flex-column mt-3" id="btn-group">
-                            <input type="submit" value="Submit" className="button" />
+                            <input type="submit" value="Submit" className="edit-button" />
                         </div>
                     </form>
                 </div>

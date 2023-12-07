@@ -1,0 +1,196 @@
+/* Card Wrapper */
+.crd-wrpr {
+    margin-top: -70px !important;
+    margin: 80px;
+}
+
+/* Main Card Styles */
+.crd {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Product Images Section */
+.prd-imgs {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Display Image Section */
+/* ... (previous CSS) ... */
+
+/* Main Display Image */
+.img-dsply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px; 
+    overflow: hidden;
+    position: relative;
+}
+
+.img-dsply img {
+    width: 30vw;
+    height: fit-content;
+    object-fit: contain; 
+}
+
+
+/* Showcase Image Section */
+.img-shwcse {
+    display: flex;
+    transition: transform 0.5s ease;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.img-shwcse img {
+    width: 130px;
+    height: fit-content;
+    border: 2px solid rgb(92, 91, 91);
+    margin: 8px;
+    cursor: pointer;
+
+}
+
+.img-selct {
+    display: flex;
+    margin-top: 10px;
+    overflow-x: auto;
+}
+
+.img-itm {
+    flex: 0 0 15%; /* Reduced the size to 15% of the container */
+    padding: 5px;
+}
+
+.img-itm img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.lst-prc{
+    font-family: Inter, sans-serif;
+    font-size: 1em;
+    position: relative;
+    color: #c97d20;
+}
+.lst-prc span{
+    font-size: 1em;
+    position: relative;
+    left: 1em;
+    text-decoration: line-through;
+    color: #a5a5a5;
+}
+
+
+
+/* Other Product Details */
+.prd-ctnt {
+    margin-top: 4rem;
+    flex: 1;
+    padding: 20px;
+}
+
+.prd-ttl {
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+.prd-rating {
+    color: #ffc107;
+}
+
+.prd-price {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.prd-dtl h2 {
+    font-size: 1.4rem;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 2rem;
+    text-transform: capitalize;
+}
+
+.prd-dtl p {
+    font-size: 1rem;
+    padding: 0.3rem;
+    opacity: 0.8;
+}
+
+.prd-dtl ul{
+    padding-left: 0 !important;
+    margin: 5px;
+}
+.feauters{
+    font-size: 1.3rem !important;
+    color: #c97d20;
+    font-weight: 600;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0;
+}
+
+.prd-dtl ul{
+    color: #c97d20;
+    padding-bottom: 1rem;
+    font-size: 1em;
+    font-weight: 1000;
+}
+
+.prd-dtl ul li{
+    padding-top: 5px;
+    color: #333;
+    font-weight: 800 !important;
+    font-size: 1em !important;
+    font-weight: 400;
+}
+/* Additional Styling for Buttons and Social Links */
+.pchs-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row; 
+    gap: 1em;
+}
+
+.add-wshlst-btn,
+.add-cr-btn {
+    padding: 12px;
+    height: 5vh;
+    background-color: #5F9EA0;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    width: 9vw;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.5em;
+}
+.add-wshlst-btn{
+    width: 11vw;
+}
+
+.scl-lnks {
+    margin-top: 20px;
+}
+.cart-icon-single, .heart-icon-single{
+    height: 3vh;
+}
+
+.scl-lnks a {
+    margin-right: 15px;
+    color: #333;
+}

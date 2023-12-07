@@ -18,31 +18,76 @@ export const Login = ({ setLoginUser }) => {
         setIsSignUp(!isSignUp);
     };
 
+    const showAlert = (message) => {
+        window.alert(message);
+    };
     const formvalidate = async (event) => {
         event.preventDefault();
-
-        try {
-            let endpoint = "/login";
-            if (isSignUp) {
-                endpoint = "/register";
+    
+        const isNameValid = isSignUp ? validateName() : true;
+        const isEmailValid = validateEmail();
+        const isPasswordValid = validatePassword();
+        const isConfirmPasswordValid = isSignUp ? validateConfirmPassword() : true;
+    
+        if (isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
+            try {
+                let endpoint = "/login";
+                if (isSignUp) {
+                    endpoint = "/register";
+                }
+                const response = await axios.post(`http://localhost:5000/api${endpoint}`, formData);
+    
+                if (response.status === 200) {
+                    const user = response.data.user;
+                    setLoginUser(user);
+                    showAlert(response.data.message);
+                    localStorage.setItem('loggedInUser', JSON.stringify(user));
+                    navigate('/');
+                }
+            } catch (error) {
+                // console.error("Error:", error.response.data.message);
+                showAlert(`Error: ${error.response.data.message}`);
             }
-            const response = await axios.post(`http://localhost:5000/api${endpoint}`, formData);
-
-            if (response.status === 200) {
-                // console.log(response.data);
-                const user = response.data.user;
-                setLoginUser(user);
-                alert(response.data.message);
-                localStorage.setItem('loggedInUser', JSON.stringify(user));
-                // window.location.href = '/';
-                // navigate('/', { state: { loginuser: response.data.user } });
-                navigate('/myAccount');
-            }
-        } catch (error) {
-            console.error("Error:", error.response.data.message);
-            alert(error.response.data.message)
         }
     };
+    
+    const validateName = () => {
+        if (!/^[a-zA-Z]{3,}$/.test(formData.name)) {
+            showAlert("Name should contain at least 3 characters, and only letters are allowed.");
+            return false;
+        }
+        return true;
+    };
+    
+    const validateEmail = () => {
+        const emailField = document.getElementById("email");
+        const email = emailField.value.trim();
+    
+        const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    
+        if (!emailRegex.test(email)) {
+            showAlert("Please enter a valid email address.");
+            return false;
+        }
+        return true;
+    };
+    
+    const validatePassword = () => {
+        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,15}$/.test(formData.password)) {
+            showAlert("Password should be 5-15 characters long and include at least one lowercase letter, one uppercase letter, one number, and one special symbol.");
+            return false;
+        }
+        return true;
+    };
+    
+    const validateConfirmPassword = () => {
+        if (formData.password !== formData.confirmPassword) {
+            showAlert("Passwords do not match");
+            return false;
+        }
+        return true;
+    };
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -55,11 +100,11 @@ export const Login = ({ setLoginUser }) => {
                 <div className="container">
                     <div className={`user ${isSignUp ? "signupBx" : "signinBx"}`}>
                         <div className="formBx">
-                            <form
+                        <form
                                 name="validatelogin"
                                 onSubmit={formvalidate}
                             >
-                                <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
+                                <h2>{isSignUp ? "Sign Up" : "Log in"}</h2>
                                 {isSignUp && (
                                     <div>
                                         <label htmlFor="namer">Name</label>
@@ -70,6 +115,7 @@ export const Login = ({ setLoginUser }) => {
                                             placeholder="Username"
                                             value={formData.name}
                                             onChange={handleChange}
+                                            onBlur={validateName}
                                         />
                                         <br />
                                     </div>
@@ -84,6 +130,7 @@ export const Login = ({ setLoginUser }) => {
                                     placeholder="Email"
                                     value={formData.email}
                                     onChange={handleChange}
+                                    onBlur={validateEmail}
                                 />
                                 <br />
                                 <label htmlFor="password">
@@ -96,6 +143,7 @@ export const Login = ({ setLoginUser }) => {
                                     placeholder="Password"
                                     value={formData.password}
                                     onChange={handleChange}
+                                    onBlur={validatePassword}
                                 />
                                 <br />
                                 {isSignUp && (
@@ -110,6 +158,7 @@ export const Login = ({ setLoginUser }) => {
                                             placeholder="Confirm Password"
                                             value={formData.confirmPassword}
                                             onChange={handleChange}
+                                            onBlur={validateConfirmPassword}
                                         />
                                         <br />
                                     </div>

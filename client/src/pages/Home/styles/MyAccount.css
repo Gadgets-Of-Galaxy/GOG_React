@@ -620,7 +620,6 @@ hr {
 /* Style the profile info section */
 #profile-info {
     width: 80%;
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;

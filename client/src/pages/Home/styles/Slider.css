@@ -1,8 +1,8 @@
 .slider {
   position: relative;
   margin-top: 3rem;
-  width: 50vw;
-  top: -23rem;
+  width: 55vw;
+  top: -4rem;
   left: 30rem;
   display: flex;
   flex-direction: row;
@@ -12,8 +12,8 @@
 }
 
 .slider img {
-  height: 25vw;
-  width: 55vw;
+  height: 23vw;
+  width: 60vw;
 }
 
 .slider-button {
@@ -21,6 +21,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 24px;
+  color: white;
   background: transparent;
   border: none;
   cursor: pointer;

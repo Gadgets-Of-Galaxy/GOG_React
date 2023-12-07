@@ -6,7 +6,7 @@ import "../styles/MyAccount.css"
 export const EditProfile = ({user}) => {
     return (
         <div className="myAccount">
-            <UserNavLinks />
+            <UserNavLinks activeLink="EditProfile"/>
             <EditProfileComponent user={user}/>
         </div>
     );

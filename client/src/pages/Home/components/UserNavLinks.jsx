@@ -1,7 +1,7 @@
 // import React from "react";
 import "../styles/MyAccount.css";
 
-export const UserNavLinks = () => {
+export const UserNavLinks = ({ activeLink }) => {
 
     const handleLogout = () => {
         localStorage.removeItem('loggedInUser');
@@ -16,13 +16,17 @@ export const UserNavLinks = () => {
             </a>
             <ul className="nav-links">
                 <li>
-                    <a href="/myAccount" className="active">
+                    <a href="/myAccount"
+                    className={activeLink === "MyProfile" ? "active" : ""}
+                    >
                         <i className='bx bx-user-circle'></i>
                         <span className="links_name">My Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/editProfile">
+                    <a href="/editProfile"
+                    className={activeLink === " EditProfile" ? "active" : ""}
+                    >
                         <i className='bx bx-box'></i>
                         <span className="links_name">Edit Profile</span>
                     </a>
@@ -34,7 +38,7 @@ export const UserNavLinks = () => {
                     </a>
                 </li>
                 <li>
-                    <a href="/wishlist">
+                    <a href="/wishlist" className={activeLink === " Wishlist" ? "active" : ""}>
                         <i className='bx bx-book-alt'></i>
                         <span className="links_name">Favourites</span>
                     </a>

@@ -14,6 +14,8 @@ import { OrdersList } from './pages/Admin/components/OrdersList';
 import { Category } from './pages/Home/components/Category';
 import {EditProfile } from './pages/Home/components/EditProfile';
 import { MyWishlists } from './pages/Home/components/MyWishlists';
+import {MyCart} from './pages/Home/components/MyCart';
+import {MyOrders} from './pages/Home/components/MyOrders';
 
 import messagesData from '../DumpDatabase/contactus.json';
 import productsData from '../DumpDatabase/products.json';
@@ -44,6 +46,7 @@ function App() {
       try {
         const response = await axios.get('http://localhost:5000/api/users/' + loginuser._id);
         setUser(response.data);
+        // console.log(user);
       } catch (error) {
         console.error('Error fetching user:', error);
       }
@@ -60,12 +63,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home loginuser={user}/>} />
         <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
-        <Route path="/products/:productId" component={ProductDetailsPage} />
-        <Route path="/myAccount" element={<MyAccount user={user}/>} />
+        <Route path="/product/:productId" element={<ProductDetailsPage user={loginuser} />} />
+        <Route path="/myAccount" element={<MyAccount user={user} />} />
         <Route path="/editProfile" element={<EditProfile user={loginuser}/>} />
         <Route path='/wishlist' element={<MyWishlists user={loginuser}/>} />
+        <Route path='/cart' element={<MyCart user={user}/>} />
+        <Route path='/myOrders' element={<MyOrders user={loginuser}/>} />
         <Route path="/category" element={<Category categories={Categorydata} products={productsData}/>} />
         <Route path='/admin' element={<AdminDashboard />} />
+        
         <Route path='/admin/addProduct' element={<AddProduct />} />
         <Route path='/admin/productDetails' element={<Products products={productsData} />}/>
         <Route path='/admin/userDetails' element={<Users users={usersData} />} />

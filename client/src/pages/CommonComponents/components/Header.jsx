@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
+import { useLocation } from "react-router-dom";
 import {
+  faXmark,
   faSearch,
   faHeart,
   faCartShopping,
@@ -10,24 +12,25 @@ import {
   faLaptop,
   faLifeRing,
   faMicrochip,
+  faFirstAid,
   faHeadphones,
-  faStar, faMale
+  faStar,
+  faMale,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-export const Header = ({user}) => {
-  // console.log("Header user: ", user);
+export const Header = ({ user }) => {
   const categories = [
     {
       category: "Mobiles",
       types: ["iPhone", "FeaturePhone", "AndroidPhone", "Tablets"],
-      icon: faMobile
+      icon: faMobile,
     },
     {
       category: "Laptops",
       types: ["MacOs", "Windows", "Gaming", "Linux"],
-      icon: faLaptop
+      icon: faLaptop,
     },
     {
       category: "Wearables",
@@ -43,7 +46,7 @@ export const Header = ({user}) => {
         "Cases/Covers",
         "PowerBanks",
       ],
-      icon: faMicrochip
+      icon: faMicrochip,
     },
     {
       category: "Audio Store",
@@ -58,7 +61,7 @@ export const Header = ({user}) => {
         "SoundBars",
         "HomeTheatre System",
       ],
-      icon: faHeadphones
+      icon: faHeadphones,
     },
     {
       category: "Smart Gadgets",
@@ -69,20 +72,35 @@ export const Header = ({user}) => {
         "Torches",
         "Extension Boards",
       ],
-      icon: faStar
+      icon: faStar,
+    },
+    {
+      category: "Health Gadgets",
+      types: ["HairDryers", "Trimmers", "OralCare", "HairStylers", "Epilators"],
+      icon: faFirstAid,
     },
     {
       category: "Personal Care",
       types: ["HairDryers", "Trimmers", "OralCare", "HairStylers", "Epilators"],
-      icon: faMale
+      icon: faMale,
     },
-    {
-      category: "Personal Care",
-      types: ["HairDryers", "Trimmers", "OralCare", "HairStylers", "Epilators"],
-      icon: faMale
-    },
-
   ];
+
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  const [isMenuOpen, setIsMenuOpen] = useState(isHomePage);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    // Close the menu when the location changes (navigating to another page)
+    if (!isHomePage && isMenuOpen) {
+      setIsMenuOpen(!isMenuOpen);
+    }
+  }, [location.pathname]);
 
   return (
     <div className="header">
@@ -93,13 +111,15 @@ export const Header = ({user}) => {
           </div>
           <div className="header-list">
             <ul>
-              <li><Link to='/'>Home</Link></li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
               <li>Shop</li>
-              <li>Gadgets</li>              
-              <li>{ !user && (
-                  <Link to='/login'>Login</Link>
-                )}</li>
-              <li><Link to='/admin'>Admin</Link></li>
+              <li>Gadgets</li>
+              <li>{!user && <Link to="/login">Login</Link>}</li>
+              <li>
+                <Link to="/admin">Admin</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -107,11 +127,13 @@ export const Header = ({user}) => {
           {user && (<Link to="/myAccount">
             <p>My Account</p>
           </Link>)}
-          <FontAwesomeIcon className="header-right-icon" icon={ faHeart } />
-          <FontAwesomeIcon
+          <Link to="/wishlist"><FontAwesomeIcon className="header-right-icon" icon={ faHeart } /></Link>
+          <Link to="/cart">
+            <FontAwesomeIcon
             className="header-right-icon"
             icon={ faCartShopping }
-          />
+            />
+          </Link>
         </div>
       </div>
       <div className="header-search-container">
@@ -123,41 +145,53 @@ export const Header = ({user}) => {
                   <div className="main-text">All Departments</div>
                   <div className="mini-text mobile-hide">Total 1234 Products</div>
                 </div>
-                <a href="#" className="dpt-trigger mobile-hide">
-                  <FontAwesomeIcon className="header-bars" icon={ faBars } />
-                  <i className="fa fa-times close-button" aria-hidden="true"></i>
+                <a
+                  href="#"
+                  className="dpt-trigger mobile-hide"
+                  onClick={toggleMenu}
+                >
+                  {!isMenuOpen && (
+                    <FontAwesomeIcon className="header-bars" icon={faBars} />
+                  )}
+                  {isMenuOpen && (
+                    <FontAwesomeIcon className="header-bars" icon={faXmark} />
+                  )}
                 </a>
               </div>
 
               <div className="categories">
-                { categories.map((category, index) => (
-                  <div key={ index } className="category has-child">
-                    <a href="#">
-                      <div className="category-list">
-                        <div className="category-left">
-                          <FontAwesomeIcon className="category-icon" icon={ category.icon } />
-                          { category.category }
+                {isMenuOpen &&
+                  categories.map((category, index) => (
+                    <div key={index} className="category has-child">
+                      <a href="#">
+                        <div className="category-list">
+                          <div className="category-left">
+                            <FontAwesomeIcon
+                              className="category-icon"
+                              icon={category.icon}
+                            />
+                            {category.category}
+                          </div>
+                          <div className="category-right">
+                            <FontAwesomeIcon icon={faAngleRight} />
+                          </div>
                         </div>
-                        <div className="category-right">
-                          <FontAwesomeIcon icon={ faAngleRight } />
-                        </div>
-                      </div>
-                    </a>
-                    <ul>
-                      { category.types.map((type, typeIndex) => (
-                        <li key={ typeIndex }>
-                          <a href={ `/${type.toLowerCase()}` }>{ type }</a>
-                        </li>
-                      )) }
-                    </ul>
-                  </div>
-                )) }
+                      </a>
+                      <ul>
+                        {category.types.map((type, typeIndex) => (
+                          <li key={typeIndex}>
+                            <a href={`/${type.toLowerCase()}`}>{type}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
           <div className="header-search">
             <div className="header-search-left">
-              <FontAwesomeIcon className="header-search-icon" icon={ faSearch } />
+              <FontAwesomeIcon className="header-search-icon" icon={faSearch} />
               <input placeholder="Search for Products" />
             </div>
 
@@ -165,6 +199,6 @@ export const Header = ({user}) => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };

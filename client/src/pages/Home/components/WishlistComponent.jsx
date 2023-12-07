@@ -10,7 +10,6 @@ export const WishlistComponent = ({ user }) => {
         const fetchWishlists = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/wishlists/${user._id}`);
-                // console.log(response.data.wishlists);
                 setWishlists(response.data.wishlists || []);
             } catch (error) {
                 console.error('Error fetching wishlists:', error);
@@ -19,6 +18,41 @@ export const WishlistComponent = ({ user }) => {
 
         fetchWishlists();
     }, [user._id]);
+
+    const addToCart = async (item) => {
+        try {
+            const response = await axios.post(`http://localhost:5000/api/carts/addToCart`, {
+                productId: item.productId,
+                userId: user._id,
+            });
+            if (response.status === 200) {
+                window.alert("Product added to cart successfully")
+            }
+        } catch (error) {
+            console.error('Error adding product to cart:', error);
+        }
+    };
+
+    const removeFromWishlist = async (item) => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/api/wishlists/${user._id}/removeProduct/${item._id}`);
+            if (response.status === 200) {
+                setWishlists(prevWishlists => {
+                    const updatedWishlists = prevWishlists.map(wishlist => {
+                        if (wishlist._id === item.wishlistId) {
+                            const updatedItems = wishlist.items.filter(product => product._id !== item._id);
+                            return { ...wishlist, items: updatedItems };
+                        }
+                        return wishlist;
+                    });
+                    return updatedWishlists;
+                });
+                window.alert("Product removed from wishlist successfully!");
+            }
+        } catch (error) {
+            console.error('Error removing product from wishlist:', error);
+        }
+    };
 
     return (
         <div className="wishlist-container">
@@ -33,10 +67,10 @@ export const WishlistComponent = ({ user }) => {
                                 <h3>{ wishlist.name }</h3>
                                 <ul className="wishlist-items">
                                     <li className="wishlist-header">
-                                        <span>Image</span>
-                                        <span>Title</span>
-                                        <span>Price</span>
-                                        {/* <span>Actions</span> */}
+                                        <span className="headerimage" >Image</span>
+                                        <span className="headertitle">Title</span>
+                                        <span className="headerprice">Price</span>
+                                        <span className="headeractions">Actions</span>
                                     </li>
                                     { Array.isArray(wishlist.items) && wishlist.items.map((item) => (
                                         <li key={item.productId} className="wishlist-product">
@@ -48,12 +82,10 @@ export const WishlistComponent = ({ user }) => {
                                                 <button onClick={() => removeFromWishlist(item)}>Remove</button>
                                             </div>
                                         </li>
-                                        // Display other wishlist item details as needed
                                     )) }
                                 </ul>
                             </div>
                         )) }
-
                     </div>
                 ) }
             </div>

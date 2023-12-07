@@ -1,333 +1,159 @@
-import styles from "../styles/ProductDetailsPage.module.css";
-import "../styles/global.css"
-  import { Header } from "../../CommonComponents/components/Header";
-import { Footer } from "../../CommonComponents/components/Footer";
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as solidStar, faStarHalfAlt as halfStar, faCartShopping, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
+import { Header } from "../../CommonComponents/components/Header";
+import "../styles/ProductDetailsPage.css";
 
-const ProductDetailsPage = () => {
-  const { productId } = useParams();
+const ProductDetailsPage = ({user}) => {
+    const { productId } = useParams();
     const [product, setProduct] = useState(null);
+    const [currentImage, setCurrentImage] = useState(null);
 
     useEffect(() => {
         const fetchProduct = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/products/${productId}`);
-                setProduct(response.data);
-                console.log(product);
+                setProduct(response.data.product);
+                setCurrentImage(response.data.product.imagePath);
             } catch (error) {
-                console.error('Error fetching product details:', error);
+                console.error("Error fetching product details:", error);
             }
         };
 
         fetchProduct();
     }, [productId]);
-  return (
-    <div className={styles.productDetailsPage}>
-      <Header/>
-      <div className={styles.image63Wrapper}>
-        <img className={styles.image63Icon} alt="" src="/image-63@2x.png" />
-      </div>
-      <div className={styles.image57Wrapper}>
-        <img className={styles.image57Icon} alt="" src="/image-57@2x.png" />
-      </div>
-      <div className={styles.image58Wrapper}>
-        <img className={styles.image58Icon} alt="" src="/image-58@2x.png" />
-      </div>
-      <div className={styles.image61Wrapper}>
-        <img className={styles.image61Icon} alt="" src="/image-61@2x.png" />
-      </div>
-      <div className={styles.productDetailsPageItem} />
-      <img className={styles.image59Icon} alt="" src="/image-59@2x.png" />
-      <div className={styles.havicHvG92}>Havic HV G-92 Gamepad</div>
-      <div className={styles.div}>$192.00</div>
-      <div className={styles.frameGroup}>
-        <div className={styles.fourStarParent}>
-          <div className={styles.fourStar}>
-            <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-            <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-            <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-            <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-            <img className={styles.vectorIcon4} alt="" src="/vector1.svg" />
-          </div>
-          <div className={styles.account}>(150 Reviews)</div>
-        </div>
-        <div className={styles.lineParent}>
-          <div className={styles.frameChild} />
-          <div className={styles.inStock}>In Stock</div>
-        </div>
-      </div>
-      <div
-        className={styles.playstation5Controller}
-      >{`PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.`}</div>
-      <div className={styles.sizeParent}>
-        <div className={styles.size}>Size:</div>
-        <div className={styles.frameContainer}>
-          <div className={styles.xsWrapper}>
-            <div className={styles.xs}>XS</div>
-          </div>
-          <div className={styles.xsWrapper}>
-            <div className={styles.s}>S</div>
-          </div>
-          <div className={styles.mWrapper}>
-            <div className={styles.m}>M</div>
-          </div>
-          <div className={styles.xsWrapper}>
-            <div className={styles.l}>L</div>
-          </div>
-          <div className={styles.xsWrapper}>
-            <div className={styles.xl}>XL</div>
-          </div>
-        </div>
-      </div>
-      <img className={styles.underlineIcon} alt="" src="/underline2.svg" />
-      <div className={styles.frameDiv}>
-        <img className={styles.frameItem} alt="" src="/frame-906.svg" />
-        <div className={styles.wrapper}>
-          <div className={styles.div1}>2</div>
-        </div>
-        <img className={styles.frameInner} alt="" src="/frame-907.svg" />
-      </div>
-      <div className={styles.button}>
-        <div className={styles.addToCart}>Buy Now</div>
-      </div>
-      <img
-        className={styles.productDetailsPageInner}
-        alt=""
-        src="/frame-904.svg"
-      />
-      <div className={styles.underlineParent}>
-        <img className={styles.underlineIcon1} alt="" src="/underline3.svg" />
-        <div className={styles.iconDeliveryParent}>
-          <img className={styles.iconDelivery} alt="" src="/icondelivery.svg" />
-          <div className={styles.freeDeliveryParent}>
-            <div className={styles.addToCart}>Free Delivery</div>
-            <div className={styles.enterYourPostal}>
-              Enter your postal code for Delivery Availability
-            </div>
-          </div>
-        </div>
-        <div className={styles.iconReturnParent}>
-          <img className={styles.iconDelivery} alt="" src="/iconreturn.svg" />
-          <div className={styles.freeDeliveryParent}>
-            <div className={styles.addToCart}>Return Delivery</div>
-            <div className={styles.free30DaysContainer}>
-              {`Free 30 Days Delivery Returns. `}
-              <span className={styles.details}>Details</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.frameParent1}>
-        <div className={styles.categoryRectangleParent}>
-          <div className={styles.categoryRectangle}>
-            <div className={styles.categoryRectangleChild} />
-          </div>
-          <div className={styles.relatedItem}>Related Item</div>
-        </div>
-        <div className={styles.cartWithFlatDiscountParent}>
-          <div className={styles.cartWithFlatDiscount}>
-            <div className={styles.discountPercentParent}>
-              <div className={styles.discountPercent}>
-                <div className={styles.div2}>-40%</div>
-              </div>
-              <div className={styles.fillHeartParent}>
-                <img
-                  className={styles.fillHeartIcon}
-                  alt=""
-                  src="/fill-heart.svg"
-                />
-                <img
-                  className={styles.fillHeartIcon}
-                  alt=""
-                  src="/fill-eye.svg"
-                />
-              </div>
-              <div className={styles.g922500x5001Wrapper}>
-                <img
-                  className={styles.g922500x5001Icon}
-                  alt=""
-                  src="/g922500x500-1@2x.png"
-                />
-              </div>
-            </div>
-            <div className={styles.havitHvG92GamepadParent}>
-              <div className={styles.addToCart}>HAVIT HV-G92 Gamepad</div>
-              <div className={styles.parent}>
-                <div className={styles.addToCart}>$120</div>
-                <div className={styles.div4}>$160</div>
-              </div>
-              <div className={styles.fiveStarParent}>
-                <div className={styles.fourStar}>
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+
+    const handleThumbnailClick = (imagePath) => {
+        setCurrentImage(imagePath);
+    };
+    const maxRating = 5;
+    const solidStars = product ? Math.floor(product.rating) : 0;
+    const hasHalfStar = product ? product.rating % 1 !== 0 : false;
+    const stars = []
+    for (let i = 1; i <= maxRating; i++) {
+        if (i <= solidStars) {
+            stars.push(
+                <FontAwesomeIcon key={ i } icon={ solidStar } className="solid-star" />
+            );
+        } else if (hasHalfStar && i === solidStars + 1) {
+            stars.push(
+                <FontAwesomeIcon key={ i } icon={ halfStar } className="half-star" />
+            );
+        } else {
+            stars.push(
+                <FontAwesomeIcon key={ i } icon={ regularStar } className="regular-star" />
+            );
+        }
+    }
+
+    const addToCart = async (item) => {
+        try {
+            // console.log(item);
+            const response = await axios.post(`http://localhost:5000/api/carts/addToCart`, {
+                productId: item._id,
+                userId: user._id,
+            });
+            if (response.status === 200) {
+                window.alert("Product added to cart successfully")
+            }
+        } catch (error) {
+            console.error('Error adding product to cart:', error);
+        }
+    };
+
+
+
+    return (
+
+
+        <div>
+            <Header />
+            { product && (
+                <div className="crd-wrpr">
+                    <div className="crd">
+                        <div className="prd-imgs">
+                            <div className="img-dsply">
+                                <img src={ `/${currentImage}` } alt="" />
+                            </div>
+                            <div className="img-shwcse">
+                                <img
+                                    src={ `/${product.imagethumbnail1}` }
+                                    alt=""
+                                    onClick={ () => handleThumbnailClick(product.imagethumbnail1) }
+                                />
+                                <img
+                                    src={ `/${product.imagethumbnail2}` }
+                                    alt=""
+                                    onClick={ () => handleThumbnailClick(product.imagethumbnail2) }
+                                />
+                                <img
+                                    src={ `/${product.imagethumbnail3}` }
+                                    alt=""
+                                    onClick={ () => handleThumbnailClick(product.imagethumbnail3) }
+                                />
+                            </div>
+                        </div>
+                        <div className="prd-ctnt">
+                            <h3 className="prd-ttl">{ product.title }</h3>
+                            <div className="prd-rating">
+                                <div className="rating-stars">
+                                    <p>
+                                        <span>{ stars }</span> ({ product.rating })
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+
+                                <div className="prd-price">
+                                    <p className="lst-prc">
+                                        INR.{ product.price }<span>INR.{ product.mrp }</span>
+                                    </p>
+                                </div>
+                                <div className="prd-dtl">
+                                    <h2>About this item:</h2>
+                                    <p>{ product.description }</p>
+                                    <h2 className="feauters">Feauters</h2>
+                                    <ul>
+
+                                        <li>{ product.features1 }</li>
+                                        <li>{ product.features2 }</li>
+                                        <li>{ product.features3 }</li>
+                                        <li>{ product.features4 }</li>
+                                    </ul>
+                                </div>
+                                <div className="pchs-info">
+                                    <button
+                                        className="add-wshlst-btn"
+                                        id="addtocart"
+                                        data-product-id-w={ product._id }
+                                        
+                                    >
+                                        <FontAwesomeIcon class="heart-icon-single" icon={ faHeart } />
+                                        Add to Wishlist
+                                    </button>
+                                    <button
+                                        className="add-cr-btn"
+                                        id="addtowishlist"
+                                        data-product-id-c={ product._id }
+                                        onClick={() => addToCart(product)}
+                                    >
+                                        <FontAwesomeIcon class="cart-icon-single" icon={ faCartShopping } />
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className={styles.div5}>(88)</div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.cartWithFlatDiscount}>
-            <div className={styles.discountPercentParent}>
-              <div className={styles.discountPercent}>
-                <div className={styles.div2}>-35%</div>
-              </div>
-              <div className={styles.rectangleDiv} />
-              <div className={styles.addToCart1}>Add To Cart</div>
-              <div className={styles.fillHeartParent}>
-                <img
-                  className={styles.fillHeartIcon}
-                  alt=""
-                  src="/fill-heart.svg"
-                />
-                <img
-                  className={styles.fillHeartIcon}
-                  alt=""
-                  src="/fill-eye.svg"
-                />
-              </div>
-              <div className={styles.ak90001500x5001Wrapper}>
-                <img
-                  className={styles.ak90001500x5001Icon}
-                  alt=""
-                  src="/ak90001500x500-1@2x.png"
-                />
-              </div>
-            </div>
-            <div className={styles.havitHvG92GamepadParent}>
-              <div className={styles.addToCart}>AK-900 Wired Keyboard</div>
-              <div className={styles.parent}>
-                <div className={styles.addToCart}>$960</div>
-                <div className={styles.div4}>$1160</div>
-              </div>
-              <div className={styles.fiveStarParent}>
-                <div className={styles.fourStar}>
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img
-                    className={styles.vectorIcon4}
-                    alt=""
-                    src="/vector1.svg"
-                  />
-                </div>
-                <div className={styles.div5}>(75)</div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.cartWithFlatDiscount}>
-            <div className={styles.discountPercentParent}>
-              <div className={styles.discountPercent}>
-                <div className={styles.div2}>-30%</div>
-              </div>
-              <div className={styles.fillHeartParent}>
-                <img
-                  className={styles.fillHeartIcon}
-                  alt=""
-                  src="/fill-heart.svg"
-                />
-                <img
-                  className={styles.fillHeartIcon}
-                  alt=""
-                  src="/fill-eye.svg"
-                />
-              </div>
-              <div className={styles.g922500x5001Wrapper}>
-                <img
-                  className={styles.g27cq4500x5001Icon}
-                  alt=""
-                  src="/g27cq4500x500-1@2x.png"
-                />
-              </div>
-            </div>
-            <div className={styles.havitHvG92GamepadParent}>
-              <div className={styles.addToCart}>IPS LCD Gaming Monitor</div>
-              <div className={styles.parent}>
-                <div className={styles.addToCart}>$370</div>
-                <div className={styles.div4}>$400</div>
-              </div>
-              <div className={styles.fiveStarParent}>
-                <div className={styles.fourStar}>
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                </div>
-                <div className={styles.div5}>(99)</div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.cart}>
-            <div className={styles.discountPercentParent}>
-              <div className={styles.fillHeartParent}>
-                <img
-                  className={styles.fillHeartIcon}
-                  alt=""
-                  src="/fill-heart.svg"
-                />
-                <img
-                  className={styles.fillHeartIcon}
-                  alt=""
-                  src="/fill-eye.svg"
-                />
-              </div>
-              <div className={styles.gammaxxL240Argb1500x5001Wrapper}>
-                <img
-                  className={styles.gammaxxL240Argb1500x5001Icon}
-                  alt=""
-                  src="/gammaxxl240argb1500x500-1@2x.png"
-                />
-              </div>
-            </div>
-            <div className={styles.freeDeliveryParent}>
-              <div className={styles.addToCart}>RGB liquid CPU Cooler</div>
-              <div className={styles.parent}>
-                <div className={styles.addToCart}>$160</div>
-                <div className={styles.div4}>$170</div>
-              </div>
-              <div className={styles.fiveStarParent}>
-                <div className={styles.fourStar}>
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-                  <img
-                    className={styles.starHalfFilledIcon}
-                    alt=""
-                    src="/starhalffilled.svg"
-                  />
-                </div>
-                <div className={styles.div5}>(65)</div>
-              </div>
-            </div>
-          </div>
+            ) }
         </div>
-      </div>
-      <div className={styles.footer}>
-        <div className={styles.underlineGroup}>
-          <img className={styles.underlineIcon2} alt="" src="/underline.svg" />
-          <div className={styles.frameWrapper}>
-            <div className={styles.iconCopyrightParent}>
-              <img
-                className={styles.starHalfFilledIcon}
-                alt=""
-                src="/iconcopyright1.svg"
-              />
-              <div className={styles.exclusivegmailcom}>
-                Copyright Rimel 2022. All right reserved
-              </div>
-            </div>
-          </div>
-        </div>
-        <Footer/>
-      </div>
-    </div>
-  );
-};
+    )
+}
+
+
+
 
 export default ProductDetailsPage;

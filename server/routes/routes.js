@@ -2,6 +2,8 @@ const express = require('express');
 const User = require('../models/User');
 const Wishlist = require('../models/Wishlist');
 const Product = require('../models/Product');
+const Checkout = require('../models/Checkout');
+const Cart = require('../models/Cart');
 
 const router = express();
 
@@ -68,23 +70,140 @@ router.get('/api/userData', (req, res) => {
 router.get('/api/products', async (req, res) => {
     try {
         const products = await Product.find({});
-        // console.log(products);
-        // const bestSellingProducts = await Product.find({}).sort('-sold').limit(10);
         res.json({ products });
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch Products' });
     }
 });
 
-// router.get('/api/wishlists', async (req, res) => {
-//     try {
-//         const userId = req.session.user._id;
-//         const wishlists = await Wishlist.find({ user: userId });
-//         res.json({ wishlists });
-//     } catch (error) {
-//         res.status(500).json({ error: 'Failed to fetch wishlists' });
-//     };
-// });
+router.get('/api/products/:id', async (req, res) => {
+    const productId = req.params.id;
+    try {
+        const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.json({ product });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch Product' });
+    }
+});
+
+router.post('/api/carts/addToCart', async (req, res) => {
+    const { productId, userId } = req.body;
+
+    try {
+        let userCart = await Cart.findOne({ user: userId });
+        if (!userCart) {
+            userCart = new Cart({ user: userId, items: [], totalQty: 0, totalCost: 0 });
+        }
+        const existingProductIndex = userCart.items.findIndex(item => item.productId.toString() === productId.toString());
+        if (existingProductIndex !== -1) {
+            userCart.items[existingProductIndex].qty += 1;
+        } else {
+            const productDetails = await Product.findById(productId);
+            if (!productDetails) {
+                return res.status(404).json({ error: 'Product not found' });
+            }
+            const product = {
+                productId,
+                qty: 1,
+                price: productDetails.price,
+                title: productDetails.title,
+                imagePath: productDetails.imagePath,
+                productCode: productDetails.productCode
+            };
+            userCart.items.push(product);
+        }
+        userCart.totalQty = userCart.items.reduce((total, item) => total + item.qty, 0);
+        userCart.totalCost = userCart.items.reduce((totalCost, item) => {
+            return totalCost + (item.price * item.qty);
+        }, 0);
+        await userCart.save();
+
+        res.status(200).json({ message: 'Product added to cart successfully', cartId: userCart._id });
+    } catch (error) {
+        console.error('Error adding product to cart:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+router.delete('/api/wishlists/:userId/removeProduct/:productId', async (req, res) => {
+    const { userId, productId } = req.params;
+    try {
+        let userWishlist = await Wishlist.findOne({ user: userId });
+        if (!userWishlist) {
+            return res.status(404).json({ error: 'Wishlist not found' });
+        }
+        const productIndex = userWishlist.items.findIndex(item => item._id.toString() === productId);
+        if (productIndex === -1) {
+            return res.status(404).json({ error: 'Product not found in wishlist' });
+        }
+        userWishlist.items.splice(productIndex, 1);
+        userWishlist.totalQty -= 1;
+        if (userWishlist.items.length === 0) {
+            await Wishlist.findByIdAndDelete(userWishlist._id);
+            return res.status(200).json({ message: 'Wishlist deleted as no products are left' });
+        }
+        await userWishlist.save();
+        res.status(200).json({ message: 'Product removed from wishlist successfully' });
+    } catch (error) {
+        console.error('Error removing product from wishlist:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.get('/api/carts/:userId', async (req, res) => {
+    const userId = req.params.userId;
+
+    try {
+        const userCart = await Cart.findOne({ user: userId });
+        if (!userCart) {
+            return res.status(404).json({ error: 'Cart not found' });
+        }
+        res.status(200).json({ cartItems: userCart.items });
+    } catch (error) {
+        console.error('Error fetching user cart items:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.get('/api/checkouts/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    try {
+        const userCheckouts = await Checkout.find({ user: userId });
+        // console.log(userCheckouts);
+        if (!userCheckouts || userCheckouts.length === 0) {
+            return res.status(404).json({ error: 'Checkouts not found' });
+        }
+        const checkoutItems = userCheckouts.flatMap(checkout => checkout.items);
+        res.status(200).json({ checkoutItems });
+    } catch (error) {
+        console.error('Error fetching user checkout items:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.post('/api/checkout', async (req, res) => {
+    try {
+        const { totalQty, totalCost, items, user } = req.body;
+        // console.log(items);
+
+        const checkout = new Checkout({
+            totalQty,
+            totalCost,
+            items,
+            user
+        });
+        await checkout.save();
+        res.status(201).json({ message: 'Checkout successful', checkout });
+        await Cart.deleteMany({ user: user });
+    } catch (error) {
+        console.error('Error creating checkout:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 router.get('/api/wishlists/:userId', async (req, res) => {
     const userId = req.params.userId;
@@ -170,7 +289,7 @@ router.post('/api/editprofile/:id', async (req, res) => {
 
         await updatedUser.save();
 
-        console.log('Updated User:', updatedUser);
+        // console.log('Updated User:', updatedUser);
         res.status(200).json(updatedUser);
     } catch (error) {
         console.error('Error updating user:', error);

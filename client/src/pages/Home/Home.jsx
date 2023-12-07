@@ -9,6 +9,7 @@ import { HomeCategorySection } from "./components/HomeCategorySection";
 import { BestSellingProducts } from "./components/BestSellingProducts";
 import { Footer } from "../CommonComponents/components/Footer";
 import axios from "axios";
+import { Brands } from "./components/Brands";
 
 export const Home = ({ loginuser }) => {
   const [products, setProducts] = useState([]);
@@ -21,7 +22,8 @@ export const Home = ({ loginuser }) => {
       try {
         const response = await axios.get("http://localhost:5000/api/products");
         if (response.status === 200) {
-          setProducts(response.data);
+          setProducts(response.data.products);
+          // console.log("products: ", response.data.products);
         } else {
           console.error("Failed to fetch products.");
         }
@@ -59,7 +61,6 @@ export const Home = ({ loginuser }) => {
       try {
         const response = await axios.get('http://localhost:5000/api/userData');
         setUser(response.data.user);
-        console.log("User data from sesssion",user);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -74,7 +75,8 @@ export const Home = ({ loginuser }) => {
 
       <Header user={loginuser}/>
       <Slider />
-      <ShopCategories />
+      <Brands />
+      {/* <ShopCategories /> */}
       {/* best deals - based on discount
           popular - based on likes
           best selling - based on sold */}
@@ -82,7 +84,7 @@ export const Home = ({ loginuser }) => {
       {/* <BrandSection /> */}
       {/* <PopularProducts /> */}
       {/* <HomeCategorySection products={products} /> */}
-      {/* <BestSellingProducts products={bestSellingProducts} /> */}
+      <BestSellingProducts products={bestSellingProducts} user={loginuser} />
       <Footer />
     </div>
   );

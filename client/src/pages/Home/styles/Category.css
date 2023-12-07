@@ -1,6 +1,7 @@
 /* Category.css */
 
 .site {
+  margin-top: 1em;
   margin: 20px;
   display: flex;
 }
@@ -90,7 +91,7 @@
   justify-content: flex-end;
   padding: 20px;
   position: absolute;
-  top: 120px;
+  top: 140px;
   right: 0;
 }
 
